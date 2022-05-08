@@ -3,17 +3,17 @@
 
 == Introducción
 
-=== Subsección
+// === Subsección
 
-*Negrita*
-`mono`
-_italic_
+// *Negrita*
+// `mono`
+// _italic_
 
 == Descripción
 
 == Implementación
 
-==Conclusiones
+== Conclusiones
 
 
 
