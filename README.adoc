@@ -9,12 +9,5 @@
 `mono`
 _italic_
 
-= Título del documento
-Cristina Fernández_de_Kirchner <cfk@gmail.com>; Nestor Kirchner <nestor@gmail.com> (1)
-v1, {docdate} (2)
-:toc: (3)
-:toc-title: Contenidos (3)
-:numbered: (4)
-:source-highlighter: coderay (5)
-:tabsize: 4 (5)
+
 
