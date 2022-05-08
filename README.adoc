@@ -1,13 +1,19 @@
 = Programación I - Trabajo Práctico: Attack on Titan, Final Season 
 
 
-== Sección
+== Introducción
 
 === Subsección
 
 *Negrita*
 `mono`
 _italic_
+
+== Descripción
+
+== Implementación
+
+==Conclusiones
 
 
 
