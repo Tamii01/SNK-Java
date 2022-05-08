@@ -1,34 +1,56 @@
 package juego;
 
+import java.awt.*;
+
 import entorno.Entorno;
+import entorno.Herramientas;
 import entorno.InterfaceJuego;
 
 public class Juego extends InterfaceJuego {
 
-	// El objeto Entorno que controla el tiempo y otros
+
 	private Entorno entorno;
 	
+	private Mikasa mikasa;
+	
+	private Kyojines kyojines;
+	
+	private Image fondo;
+	
 	public Juego() {
-		// Inicializa el objeto entorno
-		this.entorno = new Entorno(this, "Prueba del Entorno", 800, 600);
-		
-		// Inicializar lo que haga falta para el juego
-		// ...
 
-		// Inicia el juego!
+		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
+
+
+		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 1);
+		kyojines = new Kyojines();
+		
+		fondo = Herramientas.cargarImagen("calle.png");
+
 		this.entorno.iniciar();
 	}
 
-	/**
-	 * Durante el juego, el método tick() será ejecutado en cada instante y 
-	 * por lo tanto es el método más importante de esta clase. Aquí se debe 
-	 * actualizar el estado interno del juego para simular el paso del tiempo 
-	 * (ver el enunciado del TP para mayor detalle).
-	 */
 	public void tick() {
-		// Procesamiento de un instante de tiempo
-		// ...
+		entorno.dibujarImagen(fondo, entorno.ancho() / 5, entorno.alto() / 5, 60);
 		
+		
+		if (entorno.estaPresionada('a')) {
+			mikasa.moverHaciaIzquierda();
+		}
+		
+		if(entorno.estaPresionada('w')) {
+			mikasa.moverHaciaArriba();
+			
+		}
+		
+		if (entorno.estaPresionada('s')) {
+			mikasa.moverHaciaAbajo();
+			
+		}
+		
+		if (entorno.estaPresionada('d')) {
+			mikasa.moverHaciaDerecha();
+		}
 	}
 	
 	@SuppressWarnings("unused")
