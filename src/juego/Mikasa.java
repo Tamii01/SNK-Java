@@ -16,21 +16,25 @@ public class Mikasa {
 	private double velocidad;
 	private Image mikasa;
 	
+	private double tamaño;
+
+	
 
 	
 	public Mikasa (double x, double y, double velocidad) {
-		this.x = x;
-		this.y = y;
+		this.x = 400;
+		this.y = 300;
 		this.velocidad = velocidad;
 		
-		this.ancho = 20;
-		this.alto = 50;
+		this.ancho = 0;
+		this.alto = 0;
+		this.tamaño = 0;
 		
 		this.mikasa = Herramientas.cargarImagen("mikasaDerecha.png");
 	}
 
 	public void dibujar(Entorno d) {
-		d.dibujarImagen(mikasa, x, y, alto);
+		d.dibujarImagen(mikasa, 0, 0, alto);
 	}
 
 	public void moverHaciaIzquierda() {
@@ -50,11 +54,11 @@ public class Mikasa {
 		y += velocidad;
 	}
 	
-	public double getY() {
+	public double Y() {
 		return y;
 	}
 	
-	public double getX() {
+	public double X() {
 		return x;
 	}
 	
