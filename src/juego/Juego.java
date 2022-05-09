@@ -24,7 +24,7 @@ public class Juego extends InterfaceJuego {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
 
-		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 0);
+		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);
 		kyojines = new Kyojines();
 		
 		fondo = Herramientas.cargarImagen("calle.png");
