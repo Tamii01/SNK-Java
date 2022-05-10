@@ -14,8 +14,6 @@ public class Mikasa {
 	
 	private double ancho;
 	private double alto;
-	private double tamaño;
-	private double angulo;
 	
 	private Image mikasaDer;
 	/*private Image mikasaIzq;*/
@@ -28,8 +26,6 @@ public class Mikasa {
 		
 		this.ancho = 0;
 		this.alto = 0;
-		this.tamaño = 50;
-		this.angulo = -Math.PI / 4;
 		
 		this.mikasaDer = Herramientas.cargarImagen("mikasaDer.png");
 		/*this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");*/
@@ -75,13 +71,5 @@ public class Mikasa {
 		return ancho;
 	}
 	
-
-	public boolean chocasteConElEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2;
-	}
-	
-	public void cambiarDeDireccion() {
-		angulo ++;
-	}
 	
 }

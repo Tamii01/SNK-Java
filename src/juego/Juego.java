@@ -13,17 +13,15 @@ public class Juego extends InterfaceJuego {
 	
 	private Mikasa mikasaDer;
 	
-	private Mikasa mikasaIzq;
+	/*private Mikasa mikasaIzq;*/
 	
 	private Kyojines kyojines;
-	
-	private Kyojines[] titan;
 	
 	private Image fondo;
 	
 	private int puntaje;
 
-	private Obstaculos obstaculo;
+	private Obstaculos arbol;
 	
 	public Juego() {
 
@@ -31,18 +29,12 @@ public class Juego extends InterfaceJuego {
 
 
 		mikasaDer = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
-		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto() - 1, 2);
+		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto() - 15, 2);
+		arbol = new Obstaculos(entorno.ancho() /2, entorno.alto());
 		
 		fondo = Herramientas.cargarImagen("grassWstones.png");
 		
 		/*obstaculo = new Obstaculos();*/
-		
-		titan = new Kyojines[4];
-		
-		for(int i=0; i< titan.length; i++) {
-			titan[i] = new Kyojines(Math.random() * entorno.ancho(), Math.random() * entorno.alto(), Math.random());
-			
-		}
 		
 		
 
@@ -54,14 +46,24 @@ public class Juego extends InterfaceJuego {
 
 		mikasaDer.dibujar(entorno);
 		kyojines.dibujar(entorno);
+		arbol.dibujar(entorno);
 
+		kyojines.mover();
 		
 		
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("points: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
 		
-		if (entorno.estaPresionada('a')) {
+		if (kyojines.chocaEntorno(entorno)) {
+			kyojines.cambiarDeDireccion();
+		}
+		
+		if (kyojines.chocasteCon(arbol)) {
+			kyojines.cambiarDeDireccion();
 			
+		}
+		
+		if (entorno.estaPresionada('a')) {
 			mikasaDer.moverHaciaIzquierda();
 		}
 		
@@ -77,11 +79,6 @@ public class Juego extends InterfaceJuego {
 		
 		if (entorno.estaPresionada('d')) {
 			mikasaDer.moverHaciaDerecha();
-		}
-		
-		if (mikasaDer.chocasteConElEntorno(entorno)) {
-			mikasaDer.cambiarDeDireccion();
-			
 		}
 
 		
