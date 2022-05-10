@@ -14,29 +14,37 @@ public class Mikasa {
 	
 	private double ancho;
 	private double alto;
+	private double tamaño;
+	private double angulo;
 	
-	private Image mikasa;
+	private Image mikasaDer;
+	/*private Image mikasaIzq;*/
 	
 	
 	public Mikasa (double x, double y, double velocidad) {
-		this.x = y;
-		this.y = x;
+		this.x = 390; //para que esté en el medio de la pantalla, tendría que ser 400, pero con 390 queda mas simetrico para mí, hehe.
+		this.y = 300; //idem
 		this.velocidad = velocidad;
 		
 		this.ancho = 0;
 		this.alto = 0;
+		this.tamaño = 50;
+		this.angulo = -Math.PI / 4;
 		
-		this.mikasa = Herramientas.cargarImagen("mikasaDer.png");
+		this.mikasaDer = Herramientas.cargarImagen("mikasaDer.png");
+		/*this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");*/
+
 	}
 
 	public void dibujar(Entorno d) {
-		d.dibujarImagen(mikasa, x, y, alto);
+		d.dibujarImagen(mikasaDer, x, y, alto);
+		/*d.dibujarImagen(mikasaIzq, x, y, alto);*/
 		
 	}
 
 	public void moverHaciaIzquierda() {
 		x -= velocidad;
-	}
+}
 	
 	public void moverHaciaDerecha() {
 		x += velocidad;
@@ -66,4 +74,14 @@ public class Mikasa {
 	public double getAncho() {
 		return ancho;
 	}
+	
+
+	public boolean chocasteConElEntorno(Entorno entorno) {
+		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2;
+	}
+	
+	public void cambiarDeDireccion() {
+		angulo ++;
+	}
+	
 }

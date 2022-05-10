@@ -11,7 +11,9 @@ public class Juego extends InterfaceJuego {
 
 	private Entorno entorno;
 	
-	private Mikasa mikasa;
+	private Mikasa mikasaDer;
+	
+	private Mikasa mikasaIzq;
 	
 	private Kyojines kyojines;
 	
@@ -19,52 +21,69 @@ public class Juego extends InterfaceJuego {
 	
 	private Image fondo;
 	
+	private int puntaje;
+
+	private Obstaculos obstaculo;
+	
 	public Juego() {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
 
-		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);
-		kyojines = new Kyojines();
+		mikasaDer = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
+		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto() - 1, 2);
 		
-		fondo = Herramientas.cargarImagen("calle.png");
+		fondo = Herramientas.cargarImagen("grassWstones.png");
 		
-		/*
+		/*obstaculo = new Obstaculos();*/
+		
 		titan = new Kyojines[4];
 		
 		for(int i=0; i< titan.length; i++) {
 			titan[i] = new Kyojines(Math.random() * entorno.ancho(), Math.random() * entorno.alto(), Math.random());
 			
 		}
-		*/
+		
 		
 
 		this.entorno.iniciar();
 	}
 
 	public void tick() {
-		entorno.dibujarImagen(fondo, entorno.ancho() / 1, entorno.alto() / 1, 0);
+		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 
-		mikasa.dibujar(entorno); 	
+		mikasaDer.dibujar(entorno);
+		kyojines.dibujar(entorno);
 
 		
+		
+		entorno.cambiarFont("sans", 24, Color.WHITE);
+		entorno.escribirTexto("points: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
+		
 		if (entorno.estaPresionada('a')) {
-			mikasa.moverHaciaIzquierda();
+			
+			mikasaDer.moverHaciaIzquierda();
 		}
 		
 		if(entorno.estaPresionada('w')) {
-			mikasa.moverHaciaArriba();
+			mikasaDer.moverHaciaArriba();
 			
 		}
 		
 		if (entorno.estaPresionada('s')) {
-			mikasa.moverHaciaAbajo();
+			mikasaDer.moverHaciaAbajo();
 			
 		}
 		
 		if (entorno.estaPresionada('d')) {
-			mikasa.moverHaciaDerecha();
+			mikasaDer.moverHaciaDerecha();
 		}
+		
+		if (mikasaDer.chocasteConElEntorno(entorno)) {
+			mikasaDer.cambiarDeDireccion();
+			
+		}
+
 		
 	}
 	
