@@ -10,33 +10,25 @@ public class Juego extends InterfaceJuego {
 
 
 	private Entorno entorno;
-	
-	private Mikasa mikasaDer;
-	
-	/*private Mikasa mikasaIzq;*/
-	
+
+	private Mikasa mikasa;
 	private Kyojines kyojines;
-	
+
 	private Image fondo;
-	
+	private Obstaculos arbol;
 	private int puntaje;
 
-	private Obstaculos arbol;
-	
+
 	public Juego() {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
 
-		mikasaDer = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
-		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto() - 15, 2);
+		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
+		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto(), 2);
 		arbol = new Obstaculos(entorno.ancho() /2, entorno.alto());
-		
+
 		fondo = Herramientas.cargarImagen("grassWstones.png");
-		
-		/*obstaculo = new Obstaculos();*/
-		
-		
 
 		this.entorno.iniciar();
 	}
@@ -44,46 +36,68 @@ public class Juego extends InterfaceJuego {
 	public void tick() {
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 
-		mikasaDer.dibujar(entorno);
+		mikasa.dibujar(entorno);
 		kyojines.dibujar(entorno);
 		arbol.dibujar(entorno);
 
 		kyojines.mover();
+
+		int vida =5;
+		int puntaje = 0;
 		
+		if (kyojines.chocasteCon(arbol)) {
+			puntaje = puntaje + 1;
+			
+		}
 		
+		/*for(int i=0; i<10;i++) {
+			if (kyojines.chocasteCon(arbol)) {
+				puntajeNuevo = puntaje++;
+			}
+		}*/
+
+
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("points: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
-		
+		entorno.escribirTexto("Vidas: " + vida, 320, 30);
+
+
+		//------------ COLISION -------------
+
 		if (kyojines.chocaEntorno(entorno)) {
 			kyojines.cambiarDeDireccion();
 		}
-		
+
 		if (kyojines.chocasteCon(arbol)) {
 			kyojines.cambiarDeDireccion();
-			
-		}
-		
-		if (entorno.estaPresionada('a')) {
-			mikasaDer.moverHaciaIzquierda();
-		}
-		
-		if(entorno.estaPresionada('w')) {
-			mikasaDer.moverHaciaArriba();
-			
-		}
-		
-		if (entorno.estaPresionada('s')) {
-			mikasaDer.moverHaciaAbajo();
-			
-		}
-		
-		if (entorno.estaPresionada('d')) {
-			mikasaDer.moverHaciaDerecha();
 		}
 
-		
+
+
+		//----------- TECLAS -------------
+
+		if (entorno.estaPresionada('a')) {
+			mikasa.moverHaciaIzquierda();
+		}
+
+		if(entorno.estaPresionada('w')) {
+			mikasa.moverHaciaArriba();
+
+		}
+
+		if (entorno.estaPresionada('s')) {
+			mikasa.moverHaciaAbajo();
+
+		}
+
+		if (entorno.estaPresionada('d')) {
+			mikasa.moverHaciaDerecha();
+		}
+
+		// -------------------------------
+
 	}
-	
+
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Juego juego = new Juego();

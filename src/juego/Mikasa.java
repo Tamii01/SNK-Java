@@ -14,6 +14,7 @@ public class Mikasa {
 	
 	private double ancho;
 	private double alto;
+	private double angulo;
 	
 	private Image mikasaDer;
 	/*private Image mikasaIzq;*/
@@ -26,6 +27,8 @@ public class Mikasa {
 		
 		this.ancho = 0;
 		this.alto = 0;
+		this.angulo = 0;
+		
 		
 		this.mikasaDer = Herramientas.cargarImagen("mikasaDer.png");
 		/*this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");*/
@@ -33,7 +36,7 @@ public class Mikasa {
 	}
 
 	public void dibujar(Entorno d) {
-		d.dibujarImagen(mikasaDer, x, y, alto);
+		d.dibujarImagen(mikasaDer, x, y, angulo);
 		/*d.dibujarImagen(mikasaIzq, x, y, alto);*/
 		
 	}
@@ -71,5 +74,5 @@ public class Mikasa {
 		return ancho;
 	}
 	
-	
+
 }
