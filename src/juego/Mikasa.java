@@ -15,9 +15,10 @@ public class Mikasa {
 	private double ancho;
 	private double alto;
 	private double angulo;
+	private double tamaño;
 	
 	private Image mikasaDer;
-	/*private Image mikasaIzq;*/
+	private Image mikasaIzq;
 	
 	
 	public Mikasa (double x, double y, double velocidad) {
@@ -28,16 +29,17 @@ public class Mikasa {
 		this.ancho = 0;
 		this.alto = 0;
 		this.angulo = 0;
+		this.tamaño = 80;
 		
 		
 		this.mikasaDer = Herramientas.cargarImagen("mikasaDer.png");
-		/*this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");*/
+		this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");
 
 	}
 
 	public void dibujar(Entorno d) {
 		d.dibujarImagen(mikasaDer, x, y, angulo);
-		/*d.dibujarImagen(mikasaIzq, x, y, alto);*/
+	
 		
 	}
 
@@ -75,4 +77,13 @@ public class Mikasa {
 	}
 	
 
+	public void mikasaIzq(Entorno izq) {
+		izq.dibujarImagen(mikasaIzq, x, y, alto);
+	
+	}
+	
+	public boolean chocasteCon(Kyojines titan) {
+		return x > titan.getY() - titan.getAncho() / 2 && x < titan.getX() + titan.getAncho() / 2 
+				&& y + tamaño /2 > titan.getY() - titan.getaAlto() / 2;	
+	}
 }

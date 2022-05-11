@@ -28,13 +28,13 @@ public class Juego extends InterfaceJuego {
 		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto(), 2);
 		arbol = new Obstaculos(entorno.ancho() /2, entorno.alto());
 
-		fondo = Herramientas.cargarImagen("grassWstones.png");
+		//fondo = Herramientas.cargarImagen("grassWstones.png");
 
 		this.entorno.iniciar();
 	}
 
 	public void tick() {
-		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
+		//entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 
 		mikasa.dibujar(entorno);
 		kyojines.dibujar(entorno);
@@ -47,6 +47,10 @@ public class Juego extends InterfaceJuego {
 		
 		if (kyojines.chocasteCon(arbol)) {
 			puntaje = puntaje + 1;
+			
+		if (mikasa.chocasteCon(kyojines)) {
+			
+		}
 			
 		}
 		
@@ -78,6 +82,7 @@ public class Juego extends InterfaceJuego {
 
 		if (entorno.estaPresionada('a')) {
 			mikasa.moverHaciaIzquierda();
+			mikasa.mikasaIzq(entorno);
 		}
 
 		if(entorno.estaPresionada('w')) {
@@ -92,6 +97,7 @@ public class Juego extends InterfaceJuego {
 
 		if (entorno.estaPresionada('d')) {
 			mikasa.moverHaciaDerecha();
+			
 		}
 
 		// -------------------------------

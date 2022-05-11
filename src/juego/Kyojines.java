@@ -12,6 +12,8 @@ public class Kyojines {
 	
 	private double velocidad;
 	private double angulo;	
+	private double alto;
+	private double ancho;
 	
 	private double tamaño;
 	private Image titan;
@@ -51,6 +53,22 @@ public class Kyojines {
 	
 	public void acelerar() {
 		velocidad += 0.5;
+	}
+	
+	public double getY() {
+		return y;
+	}
+	
+	public double getX() {
+		return x;
+	}
+	
+	public double getaAlto() {
+		return alto;
+	}
+	
+	public double getAncho() {
+		return ancho;
 	}
 	
 	public boolean chocasteCon(Obstaculos arbol) {
