@@ -15,8 +15,7 @@ public class Kyojines {
 	private double alto;
 	private double ancho;
 	
-	
-	private double tamaño;
+	private double tamaÃ±o;
 	private Image titan;
 	
 	private Obstaculos arbol;
@@ -28,15 +27,15 @@ public class Kyojines {
 		this.x = 300;
 		this.y = 300;
 		this.velocidad = velocidad;
-		this.titan = Herramientas.cargarImagen("titanBestia.png");
-		this.tamaño = 80;
+		this.titan = Herramientas.cargarImagen("titanBestia.png"); // titan-bestia.png
+		this.tamaÃ±o = 80;
 		
 		
 		
 	}
 	
 	public void dibujar(Entorno Titan) {
-		Titan.dibujarImagen(titan, x, y, angulo, 0.18); // el ultimo parametro pasado es el tamaño de la imagen
+		Titan.dibujarImagen(titan, x, y, angulo, 0.18); // el ultimo parametro pasado es el tamaÃ±o de la imagen
 	}
 
 	public void mover () {
@@ -45,10 +44,10 @@ public class Kyojines {
 	}
 	
 	public boolean chocaEntorno(Entorno entorno) {
-		return x < tamaño / 1.30 || x > entorno.ancho() - tamaño / 1.30 || y < tamaño / 1.30 ||  y > entorno.alto() - tamaño / 1.30;// si lo divido por 2, se sale un poco más de la pantalla
+		return x < tamaÃ±o / 1.30 || x > entorno.ancho() - tamaÃ±o / 1.30 || y < tamaÃ±o / 1.30 ||  y > entorno.alto() - tamaÃ±o / 1.30;// si lo divido por 2, se sale un poco mï¿½s de la pantalla
 	}
 	
-	public void cambiarDeDireccion() {
+	public void cambiarDeDireccion() { // perseguirA(mikasa) ??
 		angulo ++;
 	}
 	
@@ -80,7 +79,12 @@ public class Kyojines {
 
 	public boolean chocasteCon(Obstaculos arbol) {
 		return x > arbol.getY() - arbol.getAncho() / 2 && x < arbol.getX() + arbol.getAncho() / 2 
-				&& y + tamaño /2 > arbol.getY() - arbol.getaAlto() / 2;	
+				&& y + tamaÃ±o /2 > arbol.getY() - arbol.getaAlto() / 2;	
+	}
+	
+	public void quedarParado() {
+		x -= velocidad * Math.cos(angulo);
+		y -= velocidad * Math.sin(angulo);
 	}
 	
 

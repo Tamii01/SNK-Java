@@ -8,7 +8,6 @@ import entorno.InterfaceJuego;
 
 public class Juego extends InterfaceJuego {
 
-
 	private Entorno entorno;
 
 	private Mikasa mikasa;
@@ -28,8 +27,10 @@ public class Juego extends InterfaceJuego {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
 
-		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
+		mikasa = new Mikasa(99999, entorno.alto() / 2, 2);
+		
 		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto(), 2);
+		
 		arb1 = new Obstaculos(entorno.ancho() /2, entorno.alto());
 		arb2 = new Obstaculos(entorno.ancho() /2, entorno.alto());
 		arb3 = new Obstaculos(entorno.ancho() /2, entorno.alto());
@@ -75,7 +76,8 @@ public class Juego extends InterfaceJuego {
 		//------------ COLISION -------------
 
 		if (kyojines.chocaEntorno(entorno)) {
-			kyojines.cambiarDeDireccion();
+//			kyojines.cambiarDeDireccion();
+			kyojines.quedarParado();
 		}
 
 		if (kyojines.chocasteCon(arb1)) {
@@ -94,8 +96,7 @@ public class Juego extends InterfaceJuego {
 		//----------- TECLAS -------------
 
 		if (entorno.estaPresionada('a')) {
-			mikasa.moverHaciaIzquierda();
-			mikasa.mikasaIzq(entorno);
+			mikasa.moverHaciaIzquierda(entorno);
 		}
 
 		if(entorno.estaPresionada('w')) {

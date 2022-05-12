@@ -12,7 +12,7 @@ public class Obstaculos {
 	private double ancho;
 	private double alto;
 	private double angulo;
-	private double tamaño = 0.50;
+	private double tamaÃ±o = 0.50;
 
 	private Image arb1;
 	private Image arb2;
@@ -31,34 +31,32 @@ public class Obstaculos {
 		this.angulo = 0;
 	}
 
-
-
 	public void casa1 (Entorno o) {
-		o.dibujarImagen(casa1, 300, 100, angulo, tamaño);
+		o.dibujarImagen(casa1, 300, 100, angulo, tamaÃ±o);
 	}
 
 
 	public void arb1 (Entorno a) {
-		a.dibujarImagen(arb1, x, y, angulo, tamaño);
+		a.dibujarImagen(arb1, x, y, angulo, tamaÃ±o);
 		
 	}
 	
 	public void arb2 (Entorno b) {
-		b.dibujarImagen(arb2, 580, 100, angulo, tamaño);
+		b.dibujarImagen(arb2, 580, 100, angulo, tamaÃ±o);
 	}
 
 	public boolean chocasteCon1(Obstaculos arb1) {
 		return x > arb1.getY() - arb1.getAncho() / 2 && x < arb1.getX() + arb1.getAncho() / 2 
-				&& y + tamaño /2 > arb1.getY() - arb1.getaAlto() / 2;
+				&& y + tamaÃ±o /2 > arb1.getY() - arb1.getaAlto() / 2;
 	}
 	
 	
 	public void arb3(Entorno c) {
-		c.dibujarImagen(arb3, 80, 200, angulo, tamaño);
+		c.dibujarImagen(arb3, 80, 200, angulo, tamaÃ±o);
 	}
 	
 	public void arb4(Entorno d) {
-		d.dibujarImagen(arb4, 80, 200, angulo, tamaño);
+		d.dibujarImagen(arb4, 80, 200, angulo, tamaÃ±o);
 		
 	}
 	
