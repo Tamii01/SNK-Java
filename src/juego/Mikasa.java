@@ -36,6 +36,15 @@ public class Mikasa {
 		this.mikasaIzq = Herramientas.cargarImagen("mikasaIzq.png");
 
 	}
+	
+	public void mikasaIzq(Entorno izq) {
+		izq.dibujarImagen(mikasaIzq, x, y, alto);
+	
+	}
+	
+	public boolean chocaEntorno(Entorno entorno) {
+		return x < tamaño / 1.30 || x > entorno.ancho() - tamaño / 1.30 || y < tamaño / 1.30 ||  y > entorno.alto() - tamaño / 1.30;// si lo divido por 2, se sale un poco más de la pantalla
+	}
 
 	public void dibujar(Entorno d) {
 		d.dibujarImagen(mikasaDer, x, y, angulo);
@@ -76,14 +85,12 @@ public class Mikasa {
 		return ancho;
 	}
 	
+	//public boolean chocasteCon(Kyojines titan) {
 
-	public void mikasaIzq(Entorno izq) {
-		izq.dibujarImagen(mikasaIzq, x, y, alto);
+	//}
 	
-	}
-	
-	public boolean chocasteCon(Kyojines titan) {
-		return x > titan.getY() - titan.getAncho() / 2 && x < titan.getX() + titan.getAncho() / 2 
-				&& y + tamaño /2 > titan.getY() - titan.getaAlto() / 2;	
-	}
+	/*public int Vida() {
+		int vida = 5;
+		if 
+	}*/
 }

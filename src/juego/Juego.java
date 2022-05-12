@@ -15,7 +15,11 @@ public class Juego extends InterfaceJuego {
 	private Kyojines kyojines;
 
 	private Image fondo;
-	private Obstaculos arbol;
+	private Obstaculos arb1;
+	private Obstaculos arb2;
+	private Obstaculos arb3;
+	private Obstaculos arb4;
+	private Obstaculos casa;
 	private int puntaje;
 
 
@@ -26,34 +30,36 @@ public class Juego extends InterfaceJuego {
 
 		mikasa = new Mikasa(entorno.ancho() /2, entorno.alto() / 2, 2);;
 		kyojines = new Kyojines(entorno.ancho() /2, entorno.alto(), 2);
-		arbol = new Obstaculos(entorno.ancho() /2, entorno.alto());
+		arb1 = new Obstaculos(entorno.ancho() /2, entorno.alto());
+		arb2 = new Obstaculos(entorno.ancho() /2, entorno.alto());
+		arb3 = new Obstaculos(entorno.ancho() /2, entorno.alto());
+		arb4 = new Obstaculos(entorno.ancho() /2, entorno.alto());
+		casa = new Obstaculos(entorno.ancho()/2, entorno.alto());
 
-		//fondo = Herramientas.cargarImagen("grassWstones.png");
+		fondo = Herramientas.cargarImagen("grassWstone.png");
 
 		this.entorno.iniciar();
 	}
 
 	public void tick() {
-		//entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
+		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 
 		mikasa.dibujar(entorno);
 		kyojines.dibujar(entorno);
-		arbol.dibujar(entorno);
+		arb1.arb1(entorno);
+		arb2.arb2(entorno);
+		arb3.arb3(entorno);
+		arb4.arb4(entorno);
+		casa.casa1(entorno);
 
 		kyojines.mover();
 
-		int vida =5;
-		int puntaje = 0;
-		
-		if (kyojines.chocasteCon(arbol)) {
-			puntaje = puntaje + 1;
-			
-		if (mikasa.chocasteCon(kyojines)) {
-			
-		}
-			
-		}
-		
+
+		/*if (kyojines.chocasteCon(arbol)) {
+			kyojines.Puntaje(kyojines, arbol);
+
+		}/*
+
 		/*for(int i=0; i<10;i++) {
 			if (kyojines.chocasteCon(arbol)) {
 				puntajeNuevo = puntaje++;
@@ -62,8 +68,8 @@ public class Juego extends InterfaceJuego {
 
 
 		entorno.cambiarFont("sans", 24, Color.WHITE);
-		entorno.escribirTexto("points: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
-		entorno.escribirTexto("Vidas: " + vida, 320, 30);
+		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
+		//entorno.escribirTexto("Vidas: " + vida, 320, 30);
 
 
 		//------------ COLISION -------------
@@ -72,10 +78,17 @@ public class Juego extends InterfaceJuego {
 			kyojines.cambiarDeDireccion();
 		}
 
-		if (kyojines.chocasteCon(arbol)) {
+		if (kyojines.chocasteCon(arb1)) {
 			kyojines.cambiarDeDireccion();
 		}
 
+		
+		if (kyojines.chocasteCon(casa)) {
+			kyojines.cambiarDeDireccion();
+		}
+
+		if (mikasa.chocaEntorno(entorno)) {
+		}
 
 
 		//----------- TECLAS -------------
@@ -97,9 +110,12 @@ public class Juego extends InterfaceJuego {
 
 		if (entorno.estaPresionada('d')) {
 			mikasa.moverHaciaDerecha();
+
+		}
+		
+		if(entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
 			
 		}
-
 		// -------------------------------
 
 	}

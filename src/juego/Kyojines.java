@@ -15,22 +15,23 @@ public class Kyojines {
 	private double alto;
 	private double ancho;
 	
+	
 	private double tamaño;
 	private Image titan;
 	
-	private Obstaculos arb1;
-	private Obstaculos arb2;
-
-	
+	private Obstaculos arbol;
+	private Mikasa mikasa;
 	
 	public Kyojines (double x, double y, double velocidad) {
 		
-		this.angulo = 4;
+		this.angulo = 180;
 		this.x = 300;
 		this.y = 300;
 		this.velocidad = velocidad;
 		this.titan = Herramientas.cargarImagen("titanBestia.png");
 		this.tamaño = 80;
+		
+		
 		
 	}
 	
@@ -51,6 +52,12 @@ public class Kyojines {
 		angulo ++;
 	}
 	
+	/*public int Puntaje(Mikasa mikasa) {
+		int puntaje = 0;
+		
+		if (mikasa.chocaste)
+	}*/
+	
 	public void acelerar() {
 		velocidad += 0.5;
 	}
@@ -62,22 +69,39 @@ public class Kyojines {
 	public double getX() {
 		return x;
 	}
-	
+
 	public double getaAlto() {
 		return alto;
 	}
-	
+
 	public double getAncho() {
 		return ancho;
 	}
-	
+
 	public boolean chocasteCon(Obstaculos arbol) {
 		return x > arbol.getY() - arbol.getAncho() / 2 && x < arbol.getX() + arbol.getAncho() / 2 
 				&& y + tamaño /2 > arbol.getY() - arbol.getaAlto() / 2;	
 	}
+	
 
-	public boolean chocasteCon(Mikasa mikasa) {
-		return x > mikasa.getY() - mikasa.getAncho() / 2 && x < mikasa.getX() + mikasa.getAncho() / 2 
-				&& y + tamaño /2 > mikasa.getY() - mikasa.getaAlto() / 2;	
+	/*public boolean chocasteCon(Mikasa mikasa) {
+		return 0;	
 	}
+	
+	/*public int Puntaje(Kyojines kyojin, Obstaculos arbol) {
+		
+		int puntaje = 0;
+		
+		switch(puntaje) {
+		
+		case arb1:
+			if (kyojin.chocasteCon(arbol)) {
+				puntaje = puntaje + 1;
+			}
+			
+			return puntaje;
+			
+		
+		}
+	}*/
 }
