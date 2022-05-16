@@ -54,14 +54,14 @@ public class Kyojin1 {
 				&& y + tamaño /2 > mikasa2.getY() - mikasa2.getaAltura() / 2;	
 	}
 
-	public boolean chocasteCon(Obstaculo1 obstaculo) {
-		return x > obstaculo.getY() - obstaculo.getAncho() / 2 && x < obstaculo.getX() + obstaculo.getAncho() / 2 
-				&& y + tamaño /2 > obstaculo.getY() - obstaculo.getaAlto() / 2;	
+	public boolean chocasteCon(Obstaculo1 o) {
+		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
+				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
 	}
 
-	public boolean chocasteCon2(Obstaculo1 obstaculo2) {
-		return x > obstaculo2.getY() - obstaculo2.getAncho() / 2 && x < obstaculo2.getX() + obstaculo2.getAncho() / 2 
-				&& y + tamaño /2 > obstaculo2.getY() - obstaculo2.getaAlto() / 2;	
+	public boolean chocasteCon2(Obstaculo1 o) {
+		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
+				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
 	}
 
 	public double getY() {

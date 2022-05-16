@@ -11,9 +11,10 @@ public class Juego1 extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa1 mikasa;
-	private Kyojin1 kyojines;
+	private Kyojin1 kyojines; // singular
 
 	private Image fondo;
+	
 	private Obstaculo1 arb1;
 	private Obstaculo1 arb2;
 	private Obstaculo1 arb3;
@@ -21,9 +22,9 @@ public class Juego1 extends InterfaceJuego {
 	private Obstaculo1 casa;
 	private Obstaculo1 casa1;
 	private Obstaculo1 suero;
+	
 	private int puntaje = 0;
 	private int vidas = 5;
-
 
 	public Juego1() {
 
@@ -32,6 +33,11 @@ public class Juego1 extends InterfaceJuego {
 		mikasa = new Mikasa1(390, 300, 5);
 
 		kyojines = new Kyojin1(90, 510, 5);
+
+		arbolGrande = new Obstaculo(100, 200, 1); // 1: árbol grande, 2: casa
+		// 'A': árbol grande, 'a': árbol peque
+		// "casa": casa,
+		// piensenlón
 
 		arb1 = new Obstaculo1(entorno.ancho(), entorno.alto());
 		arb2 = new Obstaculo1(entorno.ancho(), entorno.alto());
@@ -58,9 +64,17 @@ public class Juego1 extends InterfaceJuego {
 		casa.casa(entorno);
 		casa1.casa1(entorno);
 		suero.suero(entorno);
+		
+		for (Obstaculo o : obstaculos) {
+			o.dibujar(entorno);
+		}
 
 		kyojines.mover();
 
+//		if (kyojin.chocasteConAlgunoDe(obstaculos)) { ???
+//			
+//		}
+		
 		if (kyojines.chocasteCon(arb1)) {
 			puntaje = puntaje + 1;
 		}

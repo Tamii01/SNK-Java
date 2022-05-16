@@ -18,7 +18,7 @@ public class Mikasa1 {
 	private double angulo;
 	private double tamaño;
 	
-	private int vida;
+	private int vida; // ???
 	
 	private Image imgDerecha;
 	private Image imgIzquierda;
@@ -47,6 +47,7 @@ public class Mikasa1 {
 				|| y > entorno.alto() - tamaño / 5;
 	}
 	
+	// tá feo, aunque lo hice yo
 	public void quedarParada() {
 		x += velocidad * Math.cos(angulo); 
 		y -= velocidad * Math.cos(angulo);
@@ -65,6 +66,7 @@ public class Mikasa1 {
 		x -= velocidad;
 		mirarHaciaLaIzquierda(e);
 	}
+	
 	public void caminarHaciaDerecha() {
 		x += velocidad;
 	}
