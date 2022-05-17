@@ -14,36 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/arbol-pixel.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/arbol-pixel.png</location>
-		</link>
-		<link>
-			<name>src/casa-pixel.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/casa-pixel.png</location>
-		</link>
-		<link>
-			<name>src/casa-pixel1.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/casa-pixel1.png</location>
-		</link>
-		<link>
-			<name>src/grass-pixel.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/grass-pixel.png</location>
-		</link>
-		<link>
-			<name>src/mikasaMDer.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/mikasaMDer.png</location>
-		</link>
-		<link>
-			<name>src/mikasaMIzq.png</name>
-			<type>1</type>
-			<location>C:/Users/tamy__000/Desktop/mikasaMIzq.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -5,7 +5,7 @@ import java.awt.*;
 import entorno.Herramientas;
 import entorno.Entorno;
 
-public class Kyojin1 {
+public class Kyojin {
 
 	private double x;
 	private double y;
@@ -19,7 +19,7 @@ public class Kyojin1 {
 	private Image titan;
 
 
-	public Kyojin1 (double x, double y, double velocidad) {
+	public Kyojin (double x, double y, double velocidad) {
 
 		this.angulo = 0;
 		this.x = x;
@@ -42,26 +42,26 @@ public class Kyojin1 {
 	}
 
 	public void cambiarDeDireccion() {
-		angulo ++;
+		angulo += Math.PI / 4;
 	}
 
 	public void acelerar() {
 		velocidad += 0.5;
 	}
 
-	public boolean chocasteCon1(Mikasa1 mikasa2) {
-		return x > mikasa2.getY() - mikasa2.getAncho() / 2 && x < mikasa2.getX() + mikasa2.getAncho() / 2 
-				&& y + tamaño /2 > mikasa2.getY() - mikasa2.getaAltura() / 2;	
+	public boolean dañasteAMikasa(Mikasa mikasa) {
+		return x > mikasa.getY() - mikasa.getAncho() && x < mikasa.getX() + mikasa.getAncho()
+				&& y + tamaño> mikasa.getY() - mikasa.getaAltura();	
 	}
 
-	public boolean chocasteCon(Obstaculo1 obstaculo) {
-		return x > obstaculo.getY() - obstaculo.getAncho() / 2 && x < obstaculo.getX() + obstaculo.getAncho() / 2 
-				&& y + tamaño /2 > obstaculo.getY() - obstaculo.getaAlto() / 2;	
+	public boolean chocasteCon(Obstaculo a) {
+		return x > a.getY() - a.getAncho() / 2 && x < a.getX() + a.getAncho() / 2 
+				&& y + tamaño /2 > a.getY() - a.getaAlto() / 2;	
 	}
 
-	public boolean chocasteCon2(Obstaculo1 obstaculo2) {
-		return x > obstaculo2.getY() - obstaculo2.getAncho() / 2 && x < obstaculo2.getX() + obstaculo2.getAncho() / 2 
-				&& y + tamaño /2 > obstaculo2.getY() - obstaculo2.getaAlto() / 2;	
+	public boolean chocasteCon2(Obstaculo b) {
+		return x > b.getY() - b.getAncho() / 2 && x < b.getX() + b.getAncho() / 2 
+				&& y + tamaño /2 > b.getY() - b.getaAlto() / 2;	
 	}
 
 	public double getY() {
