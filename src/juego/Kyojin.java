@@ -54,6 +54,7 @@ public class Kyojin {
 				&& y + tamaño> mikasa.getY() - mikasa.getaAltura();	
 	}
 
+<<<<<<< HEAD:src/juego/Kyojin.java
 	public boolean chocasteCon(Obstaculo a) {
 		return x > a.getY() - a.getAncho() / 2 && x < a.getX() + a.getAncho() / 2 
 				&& y + tamaño /2 > a.getY() - a.getaAlto() / 2;	
@@ -62,6 +63,16 @@ public class Kyojin {
 	public boolean chocasteCon2(Obstaculo b) {
 		return x > b.getY() - b.getAncho() / 2 && x < b.getX() + b.getAncho() / 2 
 				&& y + tamaño /2 > b.getY() - b.getaAlto() / 2;	
+=======
+	public boolean chocasteCon(Obstaculo1 o) {
+		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
+				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
+	}
+
+	public boolean chocasteCon2(Obstaculo1 o) {
+		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
+				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
+>>>>>>> f024ac64e30237239d1a8163f2f714f4a6dd992c:src/juego/Kyojin1.java
 	}
 
 	public double getY() {
