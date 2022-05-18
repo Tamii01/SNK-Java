@@ -40,27 +40,28 @@ public class Mikasa {
 		this.ImgArriba = Herramientas.cargarImagen("mikasa-camina-arriba-Pder.png");
 	}
 
-	private void mirarHaciaLaIzquierda(Entorno a) {
-		a.dibujarImagen(imgIzquierda, x, y, altura);
+	private void mirarHaciaLaIzquierda(Entorno e) {
+		e.dibujarImagen(imgIzquierda, x, y, altura);
 	}
 	
-	public void mirarHaciaLaDerecha(Entorno b) {
-		b.dibujarImagen(imgDerecha, x, y, angulo);
+	public void mirarHaciaLaDerecha(Entorno e) {
+		e.dibujarImagen(imgDerecha, x, y, angulo);
 	}
 	
-	public void mirarHaciaArriba(Entorno c) {
-		c.dibujarImagen(ImgArriba, x, y, angulo);
+	public void mirarHaciaArriba(Entorno e) {
+		e.dibujarImagen(ImgArriba, x, y, angulo);
 	}
 	
-	public void mirarHaciaAbajo(Entorno d) {
-		d.dibujarImagen(ImgAbajo, x, y, angulo);
+	public void mirarHaciaAbajo(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
 	}
 	
-	public void dibujar(Entorno o) {
-		o.dibujarImagen(ImgAbajo, x, y, angulo);
-		o.dibujarImagen(ImgArriba, x, y, angulo);
-		o.dibujarImagen(imgDerecha, x, y, angulo);
-		o.dibujarImagen(imgIzquierda, x, y, angulo); 
+	//fixme
+	public void dibujar(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
+//		e.dibujarImagen(ImgArriba, x, y, angulo);
+//		e.dibujarImagen(imgDerecha, x, y, angulo);
+//		e.dibujarImagen(imgIzquierda, x, y, angulo); 
 	}
 
 	public boolean chocaEntorno(Entorno entorno) {
@@ -75,7 +76,7 @@ public class Mikasa {
 	
 	public boolean agarraSuero(Obstaculo suero) {
 		return x > suero.getY() - suero.getAncho() / 2 && x < suero.getX() + suero.getAncho() / 2 
-				&& y + tamaño /2 > suero.getY() - suero.getaAlto() / 2;	
+				&& y + tamaño /2 > suero.getY() - suero.getAlto() / 2;	
 	}
 	
 	public void caminarHaciaIzquierda(Entorno e) {

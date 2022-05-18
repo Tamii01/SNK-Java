@@ -11,15 +11,14 @@ public class Kyojin {
 	private double y;
 
 	private double velocidad;
-	private double angulo;	
+	private double angulo;
 	private double alto;
 	private double ancho;
 
 	private double tamaño;
 	private Image titan;
 
-
-	public Kyojin (double x, double y, double velocidad) {
+	public Kyojin(double x, double y, double velocidad) {
 
 		this.angulo = 0;
 		this.x = x;
@@ -32,13 +31,14 @@ public class Kyojin {
 		a.dibujarImagen(titan, x, y, angulo, 0.18); // el ultimo parametro pasado es el tamaÃ±o de la imagen
 	}
 
-	public void mover () {
+	public void mover() {
 		x += velocidad * Math.cos(angulo);
 		y += velocidad * Math.sin(angulo);
 	}
 
 	public boolean chocaEntorno(Entorno entorno) {
-		return x < tamaño / 1.30 || x > entorno.ancho() - tamaño / 1.30 || y < tamaño / 1.30 |  y > entorno.alto() - tamaño / 1.30;
+		return x < tamaño / 1.30 || x > entorno.ancho() - tamaño / 1.30
+				|| y < tamaño / 1.30 | y > entorno.alto() - tamaño / 1.30;
 	}
 
 	public void cambiarDeDireccion() {
@@ -51,39 +51,27 @@ public class Kyojin {
 
 	public boolean dañasteAMikasa(Mikasa mikasa) {
 		return x > mikasa.getY() - mikasa.getAncho() && x < mikasa.getX() + mikasa.getAncho()
-				&& y + tamaño> mikasa.getY() - mikasa.getaAltura();	
+				&& y + tamaño > mikasa.getY() - mikasa.getaAltura();
 	}
 
-<<<<<<< HEAD:src/juego/Kyojin.java
-	public boolean chocasteCon(Obstaculo a) {
-		return x > a.getY() - a.getAncho() / 2 && x < a.getX() + a.getAncho() / 2 
-				&& y + tamaño /2 > a.getY() - a.getaAlto() / 2;	
+	public boolean chocasteCon(Obstaculo o) {
+		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2
+				&& y + tamaño / 2 > o.getY() - o.getAlto() / 2;
 	}
-
-	public boolean chocasteCon2(Obstaculo b) {
-		return x > b.getY() - b.getAncho() / 2 && x < b.getX() + b.getAncho() / 2 
-				&& y + tamaño /2 > b.getY() - b.getaAlto() / 2;	
-=======
-	public boolean chocasteCon(Obstaculo1 o) {
-		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
-				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
-	}
-
-	public boolean chocasteCon2(Obstaculo1 o) {
-		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
-				&& y + tamaño /2 > o.getY() - o.getaAlto() / 2;	
->>>>>>> f024ac64e30237239d1a8163f2f714f4a6dd992c:src/juego/Kyojin1.java
-	}
-
-	public double getY() {
-		return y;
+	
+	public boolean chocasteConAlguno(Obstaculo[] obstaculos) {
+		return false;
 	}
 
 	public double getX() {
 		return x;
 	}
+	
+	public double getY() {
+		return y;
+	}
 
-	public double getaAlto() {
+	public double getAlto() {
 		return alto;
 	}
 
@@ -91,25 +79,15 @@ public class Kyojin {
 		return ancho;
 	}
 
-	/*	public void perseguirA(Mikasa1 mikasa) {
-	if (mikasa.getX() > 0) {
-		x++;
-	}
-	if (mikasa.getX() < 0) {
-		x++;
-	}
-	if (mikasa.getY() > 0) {
-		y++;
-	}
-	if (mikasa.getY() < 0) {
-		y++;
-	}
-}*/
+	/*
+	 * public void perseguirA(Mikasa1 mikasa) { if (mikasa.getX() > 0) { x++; } if
+	 * (mikasa.getX() < 0) { x++; } if (mikasa.getY() > 0) { y++; } if
+	 * (mikasa.getY() < 0) { y++; } }
+	 */
 
-	/*	public void quedarParado() {
-	x -= velocidad * Math.cos(angulo);
-	y -= velocidad * Math.sin(angulo);
-}*/
-
+	/*
+	 * public void quedarParado() { x -= velocidad * Math.cos(angulo); y -=
+	 * velocidad * Math.sin(angulo); }
+	 */
 
 }

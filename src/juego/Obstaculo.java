@@ -12,7 +12,7 @@ public class Obstaculo {
 	private double ancho;
 	private double alto;
 	private double angulo;
-	private double tamaño = 0.50;
+	private double tamaño = 0.50; // fixme
 
 	private Image arb1;
 	private Image arb2;
@@ -20,9 +20,9 @@ public class Obstaculo {
 	private Image arb4;
 	private Image casa;
 	private Image casa1;
-	private Image suero;
+	private Image suero; //fixme
 
-	public Obstaculo(double x, double y) {
+	public Obstaculo(double x, double y, String tipo) {
 		this.x = x;
 		this.y = y;
 		this.angulo = 0;
@@ -35,6 +35,7 @@ public class Obstaculo {
 		this.suero = Herramientas.cargarImagen("potion.png");
 	}
 
+	// fixme
 	public void obstaculos (Entorno z) {
 		z.dibujarImagen(casa, 100, 300, angulo, 0.20);
 		z.dibujarImagen(casa1, 400, 100, angulo, 0.20);
@@ -53,7 +54,7 @@ public class Obstaculo {
 		return x;
 	}
 
-	public double getaAlto() {
+	public double getAlto() {
 		return alto;
 	}
 

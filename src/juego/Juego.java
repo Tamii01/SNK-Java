@@ -11,19 +11,21 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin kyojin;
+	private Kyojin kyojin; // fixme después Kyoijin[]
 
 	private Image fondo;
-	private Obstaculo arb1;
-	private Obstaculo arb2;
+
+	// private Obstaculo[] obstaculos; // fixme
+	private Obstaculo arbolGrande;
+	private Obstaculo casaChica;
 	private Obstaculo arb3;
 	private Obstaculo arb4;
 	private Obstaculo casa;
 	private Obstaculo casa1;
 	private Obstaculo suero;
-	private int puntaje = 0;
-	private int vidas = 5;
 
+	private int puntaje;
+	private int vidas;
 
 	public Juego() {
 
@@ -33,13 +35,20 @@ public class Juego extends InterfaceJuego {
 
 		kyojin = new Kyojin(90, 510, 5);
 
-		arb1 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb2 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb3 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb4 = new Obstaculo(entorno.ancho(), entorno.alto());
-		casa = new Obstaculo(entorno.ancho(), entorno.alto());
-		casa1 = new Obstaculo(entorno.ancho(), entorno.alto());
-		suero = new Obstaculo(entorno.ancho(), entorno.alto());
+		arbolGrande = new Obstaculo(100, 50, "arbol");
+		casaChica   = new Obstaculo(700, 400, "casa");
+		
+//		arb3 = new Obstaculo(entorno.ancho(), entorno.alto());
+//		arb4 = new Obstaculo(entorno.ancho(), entorno.alto());
+//		casa = new Obstaculo(entorno.ancho(), entorno.alto());
+//		casa1 = new Obstaculo(entorno.ancho(), entorno.alto());
+//		suero = new Obstaculo(entorno.ancho(), entorno.alto());
+
+		// fixme
+//		Obstaculo[] obstaculos = { arb1, arb2, arb3, arb4, casa, casa1, suero };
+
+		puntaje = 0;
+		vidas = 5;
 
 		fondo = Herramientas.cargarImagen("grass-pixel.png");
 
@@ -53,38 +62,35 @@ public class Juego extends InterfaceJuego {
 		kyojin.dibujar(entorno);
 		kyojin.mover();
 
-		Obstaculo[] obstaculos = {arb1, arb2, arb3, arb4, casa, casa1, suero};
-
-		for (Obstaculo i : obstaculos) {
-			i.obstaculos(entorno);
-		}
+//		for (Obstaculo o : obstaculos) {
+//			o.dibujar(entorno);
+//		}
 
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
 		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
 
-
-		//------------ COLISION -------------
+		// ------------ COLISION -------------
 
 		if (kyojin.chocaEntorno(entorno)) {
 			kyojin.cambiarDeDireccion();
 		}
 
-		if (kyojin.chocasteCon(arb1)) {
-			kyojin.cambiarDeDireccion();
-		}
+//		if (kyojin.chocasteCon(arb1)) {
+//			kyojin.cambiarDeDireccion();
+//		}
+//
+//		if (kyojin.chocasteCon(arb2)) {
+//			kyojin.cambiarDeDireccion();
+//		}
 
-		if (kyojin.chocasteCon2(arb2)) {
-			kyojin.cambiarDeDireccion();
-		}
-
-		if (kyojin.chocasteCon(casa)) {
-			kyojin.cambiarDeDireccion();
-		}
-
-		if (kyojin.dañasteAMikasa(mikasa)) {
-			vidas = vidas - 1;			
-		}												
+//		if (kyojin.chocasteCon(casa)) {
+//			kyojin.cambiarDeDireccion();
+//		}
+//
+//		if (kyojin.dañasteAMikasa(mikasa)) {
+//			vidas--;
+//		}
 
 //		if (vidas == 0) {
 //			mikasa = null;
@@ -97,13 +103,13 @@ public class Juego extends InterfaceJuego {
 		if (mikasa.chocaEntorno(entorno)) {
 			mikasa.quedarParada();
 		}
-		//----------- TECLAS -------------
+		// ----------- TECLAS -------------
 
 		if (entorno.estaPresionada('a')) {
 			mikasa.caminarHaciaIzquierda(entorno);
 		}
 
-		if(entorno.estaPresionada('w')) {
+		if (entorno.estaPresionada('w')) {
 			mikasa.caminarHaciaArriba(entorno);
 		}
 
@@ -115,14 +121,14 @@ public class Juego extends InterfaceJuego {
 			mikasa.caminarHaciaDerecha(entorno);
 		}
 
-		if(entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
+		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
 
 		}
-		
-		if(mikasa.getX() == suero.getX() - 20 && mikasa.getY() == suero.getY() - 20) {
-			suero = null;
-		}
-		
+//
+//		if (mikasa.getX() == suero.getX() - 20 && mikasa.getY() == suero.getY() - 20) {
+//			suero = null;
+//		}
+
 	}
 	// -------------------------------
 
