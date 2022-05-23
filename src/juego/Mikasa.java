@@ -37,6 +37,7 @@ public class Mikasa {
 		this.ImgArriba = Herramientas.cargarImagen("mikasa-camina-arriba-pder.png");
 	}
 
+<<<<<<< HEAD
 	private void mirarHaciaLaIzquierda(Entorno o) {
 		o.dibujarImagen(imgIzquierda, x, y, altura);
 	}
@@ -60,6 +61,47 @@ public class Mikasa {
 		o.dibujarImagen(imgIzquierda, x, y, angulo); 
 	}
 
+=======
+	private void mirarHaciaLaIzquierda(Entorno e) {
+		e.dibujarImagen(imgIzquierda, x, y, altura);
+	}
+	
+	public void mirarHaciaLaDerecha(Entorno e) {
+		e.dibujarImagen(imgDerecha, x, y, angulo);
+	}
+	
+	public void mirarHaciaArriba(Entorno e) {
+		e.dibujarImagen(ImgArriba, x, y, angulo);
+	}
+	
+	public void mirarHaciaAbajo(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
+	}
+	
+	//fixme
+	public void dibujar(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
+//		e.dibujarImagen(ImgArriba, x, y, angulo);
+//		e.dibujarImagen(imgDerecha, x, y, angulo);
+//		e.dibujarImagen(imgIzquierda, x, y, angulo); 
+	}
+
+	public boolean chocaEntorno(Entorno entorno) {
+		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 5
+				|| y > entorno.alto() - tamaño / 5;
+	}
+	
+	public void quedarParada() {
+		x += velocidad * Math.cos(angulo); 
+		y -= velocidad * Math.cos(angulo);
+	}
+	
+	public boolean agarraSuero(Obstaculo suero) {
+		return x > suero.getY() - suero.getAncho() / 2 && x < suero.getX() + suero.getAncho() / 2 
+				&& y + tamaño /2 > suero.getY() - suero.getAlto() / 2;	
+	}
+	
+>>>>>>> 5b38da912e8a4e087e283515fc121bb4f5afa304
 	public void caminarHaciaIzquierda(Entorno e) {
 		x -= velocidad;
 		mirarHaciaLaIzquierda(e);
