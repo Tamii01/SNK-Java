@@ -9,12 +9,13 @@ public class Mikasa {
 
 	private double x;
 	private double y;
+	
 	private double velocidad;
 
 	private double altura;
 
 	private double angulo;
-	private double tamaño;
+	private double tamaño; // ?
 
 	private Image imgDerecha;
 	private Image imgIzquierda;
@@ -36,16 +37,12 @@ public class Mikasa {
 		this.ImgArriba = Herramientas.cargarImagen("mikasa-camina-arriba-pder.png");
 	}
 
-
-
-
-	public void dibujar(Entorno o) {
+	public void dibujar(Entorno o) { // realmente se necesitan tantas imagenes acá?
 		o.dibujarImagen(ImgAbajo, x, y, angulo);
 		o.dibujarImagen(ImgArriba, x, y, angulo);
 		o.dibujarImagen(imgDerecha, x, y, angulo);
 		o.dibujarImagen(imgIzquierda, x, y, angulo); 
 	}
-
 
 	private void mirarHaciaLaIzquierda(Entorno e) {
 		e.dibujarImagen(imgIzquierda, x, y, angulo);
@@ -62,13 +59,13 @@ public class Mikasa {
 	public void mirarHaciaAbajo(Entorno e) {
 		e.dibujarImagen(ImgAbajo, x, y, angulo);
 	}
-	
-
 
 	public boolean chocaEntorno(Entorno entorno) {
 		return x < tamaño / 2|| y < tamaño / 2|| x > entorno.ancho() - tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 	
+	
+	// fixme
 	public void quedarParada() {
 		x += velocidad * Math.cos(angulo); 
 		y -= velocidad * Math.cos(angulo);
@@ -81,7 +78,7 @@ public class Mikasa {
 	
 
 	public void caminarHaciaIzquierda(Entorno e) {
-		angulo -= 2;
+		angulo -= 0.05;
 		mirarHaciaLaIzquierda(e);
 		
 	}
@@ -92,8 +89,8 @@ public class Mikasa {
 	}
 	
 	public void caminarHaciaArriba(Entorno g) {
-		x += velocidad * Math.cos(Math.toRadians(angulo));
-        y += velocidad *Math.sin(Math.toRadians(angulo));
+		x += velocidad * Math.cos(angulo);
+        y += velocidad *Math.sin(angulo);
 		mirarHaciaArriba(g);
 	}
 
@@ -104,8 +101,7 @@ public class Mikasa {
 		}
 
 
-	
-
+	// fixme
 	public void chocasteConAlgo() {
 		x -= velocidad * Math.cos(angulo);
 		y -= velocidad * Math.cos(angulo);

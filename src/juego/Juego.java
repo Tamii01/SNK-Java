@@ -12,7 +12,7 @@ public class Juego extends InterfaceJuego {
 
 	private Mikasa mikasa;
 
-	private Disparo disparar;
+	private Disparo disparar; // ?! Disparo disparo
 
 	private Obstaculo obstaculo;
 

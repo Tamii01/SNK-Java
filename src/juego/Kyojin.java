@@ -18,11 +18,9 @@ public class Kyojin {
 	private double tamaño;
 	private Image titan;
 
-
-
-	public Kyojin (double x, double y, double velocidad, double tamaño) {
+	public Kyojin(double x, double y, double velocidad, double tamaño) {
 		this.tamaño = tamaño;
-		}
+	}
 
 	public Kyojin(double x, double y, double velocidad) {
 
@@ -35,7 +33,7 @@ public class Kyojin {
 	}
 
 	public void dibujar(Entorno a) {
-		a.dibujarImagen(titan, x, y, angulo, tamaño);
+		a.dibujarImagen(Herramientas.cargarImagen("mikasa-camina-izq-pizq.png"), x, y, angulo, tamaño);
 	}
 
 	public void mover() {
@@ -44,7 +42,8 @@ public class Kyojin {
 	}
 
 	public boolean chocaEntorno(Entorno entorno) {
-		return x < tamaño || x > entorno.ancho() - tamaño / 1.30 || y < tamaño / 1.30 ||  y > entorno.alto() - tamaño / 1.30;
+		return x < tamaño || x > entorno.ancho() - tamaño / 1.30 || y < tamaño / 1.30
+				|| y > entorno.alto() - tamaño / 1.30;
 
 	}
 
@@ -59,27 +58,24 @@ public class Kyojin {
 	public boolean dañasteAMikasa(Mikasa mikasa) {
 
 		return x == mikasa.getX() - mikasa.getTamaño() && x > mikasa.getY() + mikasa.getTamaño()
-		&& y + tamaño > mikasa.getY() - mikasa.getaAltura();	
+				&& y + tamaño > mikasa.getY() - mikasa.getaAltura();
 	}
 
-	//	public boolean chocasteCon(Obstaculo o) {
-	//		return x < o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
-	//				&& y + tamaño / 2 < o.getY() - o.getAlto() / 2;	
-	//	}
+	// public boolean chocasteCon(Obstaculo o) {
+	// return x < o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2
+	// && y + tamaño / 2 < o.getY() - o.getAlto() / 2;
+	// }
 
-	//	public boolean chocasteCon2(Obstaculo o) {
-	//		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2 
-	//				&& y + tamaño /2 > o.getY() - o.getAlto() / 2;
-	//	}
-
-
-	
+	// public boolean chocasteCon2(Obstaculo o) {
+	// return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2
+	// && y + tamaño /2 > o.getY() - o.getAlto() / 2;
+	// }
 
 	public boolean chocasteCon(Obstaculo o) {
 		return x > o.getY() - o.getAncho() / 2 && x < o.getX() + o.getAncho() / 2
 				&& y + tamaño / 2 > o.getY() - o.getAlto() / 2;
 	}
-	
+
 	public boolean chocasteConAlguno(Obstaculo[] obstaculos) {
 		return false;
 	}
@@ -87,7 +83,6 @@ public class Kyojin {
 	public double getX() {
 		return x;
 	}
-	
 
 	public double getY() {
 		return y;
@@ -101,30 +96,9 @@ public class Kyojin {
 		return ancho;
 	}
 
-
 	public double getAngulo() {
 		return angulo;
 	}
-
-	/*	public void perseguirA(Mikasa1 mikasa) {
-	if (mikasa.getX() > 0) {
-		x++;
-	}
-	if (mikasa.getX() < 0) {
-		x++;
-	}
-	if (mikasa.getY() > 0) {
-		y++;
-	}
-	if (mikasa.getY() < 0) {
-		y++;
-	}
-}*/
-
-	/*	public void quedarParado() {
-	x -= velocidad * Math.cos(angulo);
-	y -= velocidad * Math.sin(angulo);
-}*/
 
 	/*
 	 * public void perseguirA(Mikasa1 mikasa) { if (mikasa.getX() > 0) { x++; } if
@@ -132,11 +106,20 @@ public class Kyojin {
 	 * (mikasa.getY() < 0) { y++; } }
 	 */
 
-
 	/*
 	 * public void quedarParado() { x -= velocidad * Math.cos(angulo); y -=
 	 * velocidad * Math.sin(angulo); }
 	 */
 
+	/*
+	 * public void perseguirA(Mikasa1 mikasa) { if (mikasa.getX() > 0) { x++; } if
+	 * (mikasa.getX() < 0) { x++; } if (mikasa.getY() > 0) { y++; } if
+	 * (mikasa.getY() < 0) { y++; } }
+	 */
+
+	/*
+	 * public void quedarParado() { x -= velocidad * Math.cos(angulo); y -=
+	 * velocidad * Math.sin(angulo); }
+	 */
 
 }
