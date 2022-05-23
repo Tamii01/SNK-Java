@@ -11,6 +11,11 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
+
+	private Disparo disparar;
+
+	private Obstaculo obstaculo;
+
 	private Kyojin kyojin; // fixme después Kyoijin[]
 
 	private Image fondo;
@@ -24,6 +29,7 @@ public class Juego extends InterfaceJuego {
 	private Obstaculo casa1;
 	private Obstaculo suero;
 
+
 	private int puntaje;
 	private int vidas;
 
@@ -31,9 +37,12 @@ public class Juego extends InterfaceJuego {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
-		mikasa = new Mikasa(390, 300, 5);
+		mikasa = new Mikasa(390, 300, 5); //x, y, velocidad
 
-		kyojin = new Kyojin(90, 510, 5);
+		kyojin = new Kyojin(100, 510, 5, 0.18);  //x, y, velocidad, tamaño
+
+
+		obstaculo = new Obstaculo(300,500, null);
 
 		arbolGrande = new Obstaculo(100, 50, "arbol");
 		casaChica   = new Obstaculo(700, 400, "casa");
@@ -50,9 +59,13 @@ public class Juego extends InterfaceJuego {
 		puntaje = 0;
 		vidas = 5;
 
+
 		fondo = Herramientas.cargarImagen("grass-pixel.png");
 
 		this.entorno.iniciar();
+
+		puntaje = 0;
+		vidas = 5;
 	}
 
 	public void tick() {
@@ -62,19 +75,48 @@ public class Juego extends InterfaceJuego {
 		kyojin.dibujar(entorno);
 		kyojin.mover();
 
+
+		obstaculo.dibujarCasaYArbol(entorno);
+		obstaculo.dibujarObstaculo(entorno);
+		obstaculo.generarObstaculo(entorno);
+
+		entorno.cambiarFont("sans", 15, Color.WHITE);
+		entorno.escribirTexto("Posicion en x de Mikasa: " + mikasa.getX(), 500, 100);
+		entorno.escribirTexto("Posicion en y de Mikasa: " + mikasa.getY(), 500, 150);
+		entorno.escribirTexto("Posicion en x del Kyojin: " + kyojin.getX(), 500, 200);
+		entorno.escribirTexto("Posicion en y del Kyojin: " + kyojin.getY(), 500, 250);
+		entorno.escribirTexto("Posicion en y del Kyojin: " + kyojin.getY(), 500, 250);
+		entorno.escribirTexto("Angulo del Kyojin: " + kyojin.getAngulo(), 500, 300);
+		
+
 //		for (Obstaculo o : obstaculos) {
 //			o.dibujar(entorno);
 //		}
+
 
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
 		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
 
+
+
 		// ------------ COLISION -------------
+
 
 		if (kyojin.chocaEntorno(entorno)) {
 			kyojin.cambiarDeDireccion();
 		}
+
+
+		if (kyojin.dañasteAMikasa(mikasa)) {
+			vidas = vidas - 1;			
+		}												
+
+		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo())) {
+			mikasa.caminarHaciaIzquierda(entorno);
+		}
+
+		if (entorno.estaPresionada('w') && (mikasa.chocasteConEntornoSuperior())) {
 
 //		if (kyojin.chocasteCon(arb1)) {
 //			kyojin.cambiarDeDireccion();
@@ -111,18 +153,23 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
+
 			mikasa.caminarHaciaArriba(entorno);
 		}
 
-		if (entorno.estaPresionada('s')) {
+		if (entorno.estaPresionada('s') && (mikasa.chocasteConEntornoInferior())) {
 			mikasa.caminarHaciaAbajo(entorno);
 		}
 
-		if (entorno.estaPresionada('d')) {
+		if (entorno.estaPresionada('d') && (mikasa.chocasteConEntornoDerecho())) {
 			mikasa.caminarHaciaDerecha(entorno);
 		}
 
 		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
+
+			disparar.aLaDerecha(entorno);
+		}
+
 
 		}
 		
@@ -131,12 +178,11 @@ public class Juego extends InterfaceJuego {
 //			suero = null;
 //		}
 
+
 	}
-	// -------------------------------
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Juego juego = new Juego();
 	}
-
 }
