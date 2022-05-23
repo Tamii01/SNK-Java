@@ -62,6 +62,7 @@ public class Juego extends InterfaceJuego {
 		entorno.escribirTexto("Posicion en y del Kyojin: " + kyojin.getY(), 500, 250);
 		entorno.escribirTexto("Angulo del Kyojin: " + kyojin.getAngulo(), 500, 300);
 		entorno.escribirTexto("Hay colision " + mikasa.chocasteConObstaculo(obstaculo), 500, 350);
+//		entorno.di
 		
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
