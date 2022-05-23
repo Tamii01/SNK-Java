@@ -12,39 +12,35 @@ public class Obstaculo {
 	private double ancho;
 	private double alto;
 	private double angulo;
-	private double tamaño = 0.50;
 
-	private Image arb1;
-	private Image arb2;
-	private Image arb3;
-	private Image arb4;
 	private Image casa;
-	private Image casa1;
-	private Image suero;
+	private Image casainvertida;
+	private Image arbol;
 
 	public Obstaculo(double x, double y) {
 		this.x = x;
 		this.y = y;
 		this.angulo = 0;
-		this.arb1 = Herramientas.cargarImagen("arbol-pixel.png");
-		this.arb2 = Herramientas.cargarImagen("arbol-pixel.png");
-		this.arb3 = Herramientas.cargarImagen("arbol-pixel.png");
-		this.arb4 = Herramientas.cargarImagen("arbol-pixel.png");
+		this.casainvertida = Herramientas.cargarImagen("casa-pixel-invertida.png");
 		this.casa = Herramientas.cargarImagen("casa-pixel.png");
-		this.casa1 = Herramientas.cargarImagen("casa-pixel1.png");
-		this.suero = Herramientas.cargarImagen("potion.png");
+		this.arbol = Herramientas.cargarImagen("arbol-pixel.png");
 	}
 
-	public void obstaculos (Entorno z) {
-		z.dibujarImagen(casa, 100, 300, angulo, 0.20);
-		z.dibujarImagen(casa1, 400, 100, angulo, 0.20);
-		z.dibujarImagen(arb1, 600, 400, angulo, 0.25);
-		z.dibujarImagen(arb2, 480, 100, angulo, 0.25);
-		z.dibujarImagen(arb3, 150, 200, angulo, 0.25);
-		z.dibujarImagen(arb4, 280, 450, angulo, 0.25);
-		z.dibujarImagen(suero, 450, 300, angulo, tamaño);
+	public void generarObstaculo(Entorno e) {
+		e.dibujarImagen(casainvertida, 150, 200, angulo, 0.20);
+		e.dibujarImagen(arbol, 500, 230, angulo, 0.25);
 	}
-	
+
+	public void dibujarObstaculo (Entorno e) {
+		e.dibujarImagen(casa, 600, 200, angulo, 0.20);
+		e.dibujarImagen(arbol, 400, 400, angulo, 0.25);
+	}
+
+	public void dibujarCasaYArbol (Entorno e) {
+		e.dibujarImagen(casainvertida, 450, 500, angulo, 0.20);
+		e.dibujarImagen(arbol, 300, 630, angulo, 0.25);
+	}
+
 	public double getY() {
 		return y;
 	}
@@ -53,7 +49,7 @@ public class Obstaculo {
 		return x;
 	}
 
-	public double getaAlto() {
+	public double getAlto() {
 		return alto;
 	}
 

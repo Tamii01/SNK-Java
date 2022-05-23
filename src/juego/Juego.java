@@ -12,38 +12,30 @@ public class Juego extends InterfaceJuego {
 
 	private Mikasa mikasa;
 	private Kyojin kyojin;
+	private Disparo disparar;
 
 	private Image fondo;
-	private Obstaculo arb1;
-	private Obstaculo arb2;
-	private Obstaculo arb3;
-	private Obstaculo arb4;
-	private Obstaculo casa;
-	private Obstaculo casa1;
-	private Obstaculo suero;
-	private int puntaje = 0;
-	private int vidas = 5;
+	private Obstaculo obstaculo;
 
+	private int puntaje;
+	private int vidas;
 
 	public Juego() {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600);
 
-		mikasa = new Mikasa(390, 300, 5);
+		mikasa = new Mikasa(390, 300, 5); //x, y, velocidad
 
-		kyojin = new Kyojin(90, 510, 5);
+		kyojin = new Kyojin(100, 510, 5, 0.18);  //x, y, velocidad, tamaño
 
-		arb1 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb2 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb3 = new Obstaculo(entorno.ancho(), entorno.alto());
-		arb4 = new Obstaculo(entorno.ancho(), entorno.alto());
-		casa = new Obstaculo(entorno.ancho(), entorno.alto());
-		casa1 = new Obstaculo(entorno.ancho(), entorno.alto());
-		suero = new Obstaculo(entorno.ancho(), entorno.alto());
+		obstaculo = new Obstaculo(300,500);
 
 		fondo = Herramientas.cargarImagen("grass-pixel.png");
 
 		this.entorno.iniciar();
+
+		puntaje = 0;
+		vidas = 5;
 	}
 
 	public void tick() {
@@ -53,32 +45,23 @@ public class Juego extends InterfaceJuego {
 		kyojin.dibujar(entorno);
 		kyojin.mover();
 
-		Obstaculo[] obstaculos = {arb1, arb2, arb3, arb4, casa, casa1, suero};
+		obstaculo.dibujarCasaYArbol(entorno);
+		obstaculo.dibujarObstaculo(entorno);
+		obstaculo.generarObstaculo(entorno);
 
-		for (Obstaculo i : obstaculos) {
-			i.obstaculos(entorno);
-		}
-
+		entorno.cambiarFont("sans", 15, Color.WHITE);
+		entorno.escribirTexto("Posicion en x de Mikasa: " + mikasa.getX(), 500, 100);
+		entorno.escribirTexto("Posicion en y de Mikasa: " + mikasa.getY(), 500, 150);
+		entorno.escribirTexto("Posicion en x del Kyojin: " + kyojin.getX(), 500, 200);
+		entorno.escribirTexto("Posicion en y del Kyojin: " + kyojin.getY(), 500, 250);
+		entorno.escribirTexto("Posicion en y del Kyojin: " + kyojin.getY(), 500, 250);
+		entorno.escribirTexto("Angulo del Kyojin: " + kyojin.getAngulo(), 500, 300);
+		
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
 		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
 
-
-		//------------ COLISION -------------
-
 		if (kyojin.chocaEntorno(entorno)) {
-			kyojin.cambiarDeDireccion();
-		}
-
-		if (kyojin.chocasteCon(arb1)) {
-			kyojin.cambiarDeDireccion();
-		}
-
-		if (kyojin.chocasteCon2(arb2)) {
-			kyojin.cambiarDeDireccion();
-		}
-
-		if (kyojin.chocasteCon(casa)) {
 			kyojin.cambiarDeDireccion();
 		}
 
@@ -86,49 +69,29 @@ public class Juego extends InterfaceJuego {
 			vidas = vidas - 1;			
 		}												
 
-//		if (vidas == 0) {
-//			mikasa = null;
-//		} 
-//		
-//		if (mikasa == null) {
-//			then termina el juego (mostrar por pantalla game over)
-//		}
-
-		if (mikasa.chocaEntorno(entorno)) {
-			mikasa.quedarParada();
-		}
-		//----------- TECLAS -------------
-
-		if (entorno.estaPresionada('a')) {
+		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.caminarHaciaIzquierda(entorno);
 		}
 
-		if(entorno.estaPresionada('w')) {
+		if (entorno.estaPresionada('w') && (mikasa.chocasteConEntornoSuperior())) {
 			mikasa.caminarHaciaArriba(entorno);
 		}
 
-		if (entorno.estaPresionada('s')) {
+		if (entorno.estaPresionada('s') && (mikasa.chocasteConEntornoInferior())) {
 			mikasa.caminarHaciaAbajo(entorno);
 		}
 
-		if (entorno.estaPresionada('d')) {
+		if (entorno.estaPresionada('d') && (mikasa.chocasteConEntornoDerecho())) {
 			mikasa.caminarHaciaDerecha(entorno);
 		}
 
-		if(entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
-
+		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
+			disparar.aLaDerecha(entorno);
 		}
-		
-		if(mikasa.getX() == suero.getX() - 20 && mikasa.getY() == suero.getY() - 20) {
-			suero = null;
-		}
-		
 	}
-	// -------------------------------
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Juego juego = new Juego();
 	}
-
 }
