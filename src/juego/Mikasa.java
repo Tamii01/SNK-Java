@@ -9,7 +9,6 @@ public class Mikasa {
 
 	private double x;
 	private double y;
-
 	private double velocidad;
 
 	private double ancho;
@@ -41,7 +40,7 @@ public class Mikasa {
 	}
 
 	private void mirarHaciaLaIzquierda(Entorno e) {
-		e.dibujarImagen(imgIzquierda, x, y, altura);
+		e.dibujarImagen(imgIzquierda, x, y, angulo);
 	}
 	
 	public void mirarHaciaLaDerecha(Entorno e) {
@@ -65,8 +64,7 @@ public class Mikasa {
 	}
 
 	public boolean chocaEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 5
-				|| y > entorno.alto() - tamaño / 5;
+		return x < tamaño / 2|| y < tamaño / 2|| x > entorno.ancho() - tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 	
 	public void quedarParada() {
@@ -79,22 +77,26 @@ public class Mikasa {
 				&& y + tamaño /2 > suero.getY() - suero.getAlto() / 2;	
 	}
 	
+	
 	public void caminarHaciaIzquierda(Entorno e) {
-		x -= velocidad;
+		angulo -= 2;
 		mirarHaciaLaIzquierda(e);
+		
 	}
 	public void caminarHaciaDerecha(Entorno f) {
-		x += velocidad;
+		angulo += 2;
 		mirarHaciaLaDerecha(f);
 	}
 	
 	public void caminarHaciaArriba(Entorno g) {
-		y -= velocidad;
+		x += velocidad * Math.cos(Math.toRadians(angulo));
+        y += velocidad *Math.sin(Math.toRadians(angulo));
 		mirarHaciaArriba(g);
 	}
 
 	public void caminarHaciaAbajo(Entorno h) {
-		y += velocidad;
+		x -= velocidad *Math.cos(Math.toRadians(angulo));
+        y -= velocidad *Math.sin(Math.toRadians(angulo));
 		mirarHaciaAbajo(h);
 	}
 
@@ -113,5 +115,6 @@ public class Mikasa {
 	public double getAncho() {
 		return ancho;
 	}
-
+//	public void cambiarDeDireccion() {
+//		angulo += Math.PI / 4;
 }

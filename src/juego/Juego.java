@@ -101,6 +101,7 @@ public class Juego extends InterfaceJuego {
 //		}
 
 		if (mikasa.chocaEntorno(entorno)) {
+			//mikasa.cambiarDeDireccion();
 			mikasa.quedarParada();
 		}
 		// ----------- TECLAS -------------
@@ -124,6 +125,7 @@ public class Juego extends InterfaceJuego {
 		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
 
 		}
+		
 //
 //		if (mikasa.getX() == suero.getX() - 20 && mikasa.getY() == suero.getY() - 20) {
 //			suero = null;
