@@ -9,57 +9,42 @@ public class Obstaculo {
 
 	private double x;
 	private double y;
-	private double ancho;
-	private double alto;
+	private double anchoCasa;
+	private double altoCasa;
+	private double anchoArbol;
+	private double altoArbol;
 	private double angulo;
-<<<<<<< HEAD
-=======
-	private double tamaño = 0.50; // fixme
->>>>>>> 5b38da912e8a4e087e283515fc121bb4f5afa304
 
 	private Image casa;
-<<<<<<< HEAD
 	private Image casainvertida;
 	private Image arbol;
-=======
-	private Image casa1;
-	private Image suero; //fixme
->>>>>>> 5b38da912e8a4e087e283515fc121bb4f5afa304
 
-	public Obstaculo(double x, double y, String tipo) {
+	public Obstaculo(double x, double y) {
 		this.x = x;
 		this.y = y;
+		this.anchoCasa = 590;
+		this.altoCasa = 492; 
+		this.altoArbol = 350;
+		this.anchoArbol = 600;
 		this.angulo = 0;
 		this.casainvertida = Herramientas.cargarImagen("casa-pixel-invertida.png");
 		this.casa = Herramientas.cargarImagen("casa-pixel.png");
 		this.arbol = Herramientas.cargarImagen("arbol-pixel.png");
 	}
 
-<<<<<<< HEAD
 	public void generarObstaculo(Entorno e) {
-		e.dibujarImagen(casainvertida, 150, 200, angulo, 0.20);
-		e.dibujarImagen(arbol, 500, 230, angulo, 0.25);
-=======
-	// fixme
-	public void obstaculos (Entorno z) {
-		z.dibujarImagen(casa, 100, 300, angulo, 0.20);
-		z.dibujarImagen(casa1, 400, 100, angulo, 0.20);
-		z.dibujarImagen(arb1, 600, 400, angulo, 0.25);
-		z.dibujarImagen(arb2, 480, 100, angulo, 0.25);
-		z.dibujarImagen(arb3, 150, 200, angulo, 0.25);
-		z.dibujarImagen(arb4, 280, 450, angulo, 0.25);
-		z.dibujarImagen(suero, 450, 300, angulo, tamaño);
->>>>>>> 5b38da912e8a4e087e283515fc121bb4f5afa304
+		e.dibujarImagen(casainvertida, x, y, angulo, 0.20);
+//		e.dibujarImagen(arbol, 500, 230, angulo, 0.25);
 	}
 
 	public void dibujarObstaculo (Entorno e) {
-		e.dibujarImagen(casa, 600, 200, angulo, 0.20);
-		e.dibujarImagen(arbol, 400, 400, angulo, 0.25);
+//		e.dibujarImagen(casa, 600, 200, angulo, 0.20);
+//		e.dibujarImagen(arbol, 400, 400, angulo, 0.25);
 	}
 
 	public void dibujarCasaYArbol (Entorno e) {
-		e.dibujarImagen(casainvertida, 450, 500, angulo, 0.20);
-		e.dibujarImagen(arbol, 300, 630, angulo, 0.25);
+//		e.dibujarImagen(casainvertida, 450, 500, angulo, 0.20);
+//		e.dibujarImagen(arbol, 300, 630, angulo, 0.25);
 	}
 
 	public double getY() {
@@ -70,11 +55,19 @@ public class Obstaculo {
 		return x;
 	}
 
-	public double getAlto() {
-		return alto;
+	public double getAltoCasa() {
+		return altoCasa;
 	}
 
-	public double getAncho() {
-		return ancho;
+	public double getAnchoCasa() {
+		return anchoCasa;
+	}
+	
+	public double getAltoArbol() {
+		return altoArbol;
+	}
+	
+	public double getAnchoArbol() {
+		return anchoArbol;
 	}
 }
