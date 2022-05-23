@@ -52,7 +52,6 @@ public class Mikasa {
 	
 	private void mirarHaciaLaIzquierda(Entorno o) {
 		o.dibujarImagen(imgIzquierda, x, y, altura);
-//		o.dibujarImagen();
 	}
 
 	public void mirarHaciaLaDerecha(Entorno o) {

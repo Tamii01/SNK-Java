@@ -71,25 +71,18 @@ public class Kyojin {
 		return angulo;
 	}
 
-	/*	public void perseguirA(Mikasa1 mikasa) {
-	if (mikasa.getX() > 0) {
-		x++;
-	}
-	if (mikasa.getX() < 0) {
-		x++;
-	}
-	if (mikasa.getY() > 0) {
-		y++;
-	}
-	if (mikasa.getY() < 0) {
-		y++;
-	}
-}*/
-
-	/*	public void quedarParado() {
-	x -= velocidad * Math.cos(angulo);
-	y -= velocidad * Math.sin(angulo);
-}*/
-
+//	public void perseguirA(Mikasa1 mikasa) {
+//	if (mikasa.getX() > 0) {
+//		x++;
+//	}
+//	if (mikasa.getX() < 0) {
+//		x++;
+//	}
+//	if (mikasa.getY() > 0) {
+//		y++;
+//	}
+//	if (mikasa.getY() < 0) {
+//		y++;
+//	}
 
 }

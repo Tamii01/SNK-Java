@@ -71,3 +71,4 @@ public class Obstaculo {
 		return anchoArbol;
 	}
 }
+
