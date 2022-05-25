@@ -51,7 +51,7 @@ public class Mikasa {
 	}
 	
 	private void mirarHaciaLaIzquierda(Entorno o) {
-		o.dibujarImagen(imgIzquierda, x, y, altura);
+		o.dibujarImagen(imgIzquierda, x, y, angulo);
 	}
 
 	public void mirarHaciaLaDerecha(Entorno o) {
@@ -67,23 +67,25 @@ public class Mikasa {
 	}
 
 	public void caminarHaciaIzquierda(Entorno e) {
-		x -= velocidad;
+		angulo -= 0.05;
 		mirarHaciaLaIzquierda(e);
+		
+	}
+	public void caminarHaciaDerecha(Entorno f) {
+		angulo += 0.05;
+		mirarHaciaLaDerecha(f);
 	}
 	
-	public void caminarHaciaDerecha(Entorno e) {
-		x += velocidad;
-		mirarHaciaLaDerecha(e);
+	public void caminarHaciaArriba(Entorno g) {
+		x += velocidad * Math.cos(angulo);
+        y += velocidad * Math.sin(angulo);
+		mirarHaciaArriba(g);
 	}
 
-	public void caminarHaciaArriba(Entorno e) {
-		y -= velocidad;
-		mirarHaciaArriba(e);
-	}
-
-	public void caminarHaciaAbajo(Entorno e) {
-		y += velocidad;
-		mirarHaciaAbajo(e);
+	public void caminarHaciaAbajo(Entorno h) {
+		x -= velocidad * Math.cos(angulo);
+        y -= velocidad * Math.sin(angulo);
+		mirarHaciaAbajo(h);
 	}
 	
 	public boolean chocasteConEntornoIzquierdo() {
