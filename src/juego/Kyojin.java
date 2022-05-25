@@ -47,6 +47,10 @@ public class Kyojin {
 		velocidad += 0.5;
 	}
 
+	public void acelerarMulti() {
+		velocidad += 0.5;
+	}
+
 	public boolean dañasteAMikasa(Mikasa mikasa) {
 		return x == mikasa.getX() - mikasa.getTamaño() && y == mikasa.getY() - mikasa.getTamaño();	
 	}
@@ -71,18 +75,18 @@ public class Kyojin {
 		return angulo;
 	}
 
-//	public void perseguirA(Mikasa1 mikasa) {
-//	if (mikasa.getX() > 0) {
-//		x++;
-//	}
-//	if (mikasa.getX() < 0) {
-//		x++;
-//	}
-//	if (mikasa.getY() > 0) {
-//		y++;
-//	}
-//	if (mikasa.getY() < 0) {
-//		y++;
-//	}
+	//	public void perseguirA(Mikasa mikasa) {
+	//	if (mikasa.getX() > 0) {
+	//		x++;
+	//	}
+	//	if (mikasa.getX() < 0) {
+	//		x++;
+	//	}
+	//	if (mikasa.getY() > 0) {
+	//		y++;
+	//	}
+	//	if (mikasa.getY() < 0) {
+	//		y++;
+	//	}
 
 }
