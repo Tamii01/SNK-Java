@@ -66,23 +66,23 @@ public class Mikasa {
 		o.dibujarImagen(ImgAbajo, x, y, angulo);
 	}
 
-	public void caminarHaciaIzquierda(Entorno e) {
+	public void rotarHaciaIzquierda(Entorno e) {
 		angulo -= 0.05;
 		mirarHaciaLaIzquierda(e);
 		
 	}
-	public void caminarHaciaDerecha(Entorno f) {
+	public void rotarHaciaDerecha(Entorno f) {
 		angulo += 0.05;
 		mirarHaciaLaDerecha(f);
 	}
 	
-	public void caminarHaciaArriba(Entorno g) {
+	public void avanzar(Entorno g) {
 		x += velocidad * Math.cos(angulo);
         y += velocidad * Math.sin(angulo);
 		mirarHaciaArriba(g);
 	}
 
-	public void caminarHaciaAbajo(Entorno h) {
+	public void retroceder(Entorno h) {
 		x -= velocidad * Math.cos(angulo);
         y -= velocidad * Math.sin(angulo);
 		mirarHaciaAbajo(h);
