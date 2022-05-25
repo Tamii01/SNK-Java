@@ -12,7 +12,7 @@ public class Mikasa {
 
 	private double velocidad;
 
-	private double altura;
+	private double altura; // altura ó tamaño?
 	private double angulo;
 	private double tamaño;
 
@@ -71,17 +71,22 @@ public class Mikasa {
 		mirarHaciaLaIzquierda(e);
 		
 	}
+
+	// por qué Entorno f?
 	public void rotarHaciaDerecha(Entorno f) {
 		angulo += 0.05;
 		mirarHaciaLaDerecha(f);
 	}
 	
+	// por qué Entorno g?
 	public void avanzar(Entorno g) {
 		x += velocidad * Math.cos(angulo);
         y += velocidad * Math.sin(angulo);
 		mirarHaciaArriba(g);
 	}
 
+	// por qué Entorno h?
+	// en el enunciado no dice que Mikasa podía retroceder
 	public void retroceder(Entorno h) {
 		x -= velocidad * Math.cos(angulo);
         y -= velocidad * Math.sin(angulo);
@@ -123,4 +128,5 @@ public class Mikasa {
 	public double getAngulo() {
 		return this.angulo;
 	}
+
 }

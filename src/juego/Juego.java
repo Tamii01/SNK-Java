@@ -11,10 +11,10 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin kyojin;
+	private Kyojin kyojin; // debería haber un array de kyojines, no?
 	private Disparo disparo;
 	
-	private Obstaculo obstaculo;
+	private Obstaculo obstaculo; // debería haber un array de obstáculos, no?
 	private Image fondo;
 
 	private int puntaje;
@@ -66,7 +66,7 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (kyojin.dañasteAMikasa(mikasa)) {
-			vidas = vidas - 1;		
+			vidas = vidas - 1; // vidas-- es más corto
 		}
 		
 //		if (vidas == 0) {

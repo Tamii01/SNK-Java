@@ -15,7 +15,7 @@ public class Kyojin {
 	private double alto;
 	private double ancho;
 
-	private double tamaño;
+	private double tamaño; // tamaño ó ancho y alto?
 	private Image titan;
 
 	public Kyojin (double x, double y, double velocidad, double tamaño) {
@@ -30,6 +30,7 @@ public class Kyojin {
 		a.dibujarImagen(titan, x, y, angulo, tamaño);
 	}
 
+	// por qué no hacen source → format?
 	public void mover () {
 		x += velocidad * Math.cos(angulo);
 		y += velocidad * Math.sin(angulo);
