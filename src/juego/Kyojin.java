@@ -23,7 +23,7 @@ public class Kyojin {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
-		this.titan = Herramientas.cargarImagen("titan-bestia.png");
+		this.titan = Herramientas.cargarImagen("Titan-bestia.png");
 	}
 
 	public void dibujar(Entorno a) {
@@ -44,7 +44,7 @@ public class Kyojin {
 	}
 
 	public void acelerar() {
-		velocidad += 0.5;
+		velocidad += 0.11;
 	}
 
 	public boolean dañasteAMikasa(Mikasa mikasa) {

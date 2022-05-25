@@ -5,48 +5,67 @@ import java.awt.*;
 import entorno.Entorno;
 import entorno.Herramientas;
 
-public class Obstaculo {
+public class Obstaculo {   //CLASE (anotacion mia xd sorry;  july)
 
-	private double x;
-	private double y;
-	private double anchoCasa;
+   // ATRIBUTOS 
+
+	private double x;            //posicion en X -
+	private double y;            //posicion en Y |
+	private double anchoCasa;    
 	private double altoCasa;
 	private double anchoArbol;
 	private double altoArbol;
 	private double angulo;
 
-	private Image casa;
-	private Image casainvertida;
-	private Image arbol;
-
-	public Obstaculo(double x, double y) {
+	private Image casadearriba;
+	private Image casadelmedio;
+	private Image casadeabajo; 
+	private Image arbolgrande;
+	private Image arbolpequeño;
+	
+	
+	// METODOS 
+	
+	// Método Constructor 
+	
+	public Obstaculo(double x, double y) {  
 		this.x = x;
 		this.y = y;
-		this.anchoCasa = 590;
-		this.altoCasa = 492; 
-		this.altoArbol = 350;
-		this.anchoArbol = 600;
-		this.angulo = 0;
-		this.casainvertida = Herramientas.cargarImagen("casa-pixel-invertida.png");
-		this.casa = Herramientas.cargarImagen("casa-pixel.png");
-		this.arbol = Herramientas.cargarImagen("arbol-pixel.png");
+		this.anchoCasa = 690;  
+		this.altoCasa = 492;    
+		this.altoArbol = 350;  
+		this.anchoArbol = 600; 
+		this.angulo = 0;                                                     // ANOTACION VIEJA = ANOTACION NUEVA  
+		this.casadearriba = Herramientas.cargarImagen("casa-de-arriba.png"); // casa invertida = casa de arriba 
+		this.casadelmedio = Herramientas.cargarImagen("casa-del-medio.png"); // casa = casa del  medio
+		this.casadeabajo = Herramientas.cargarImagen("casa-de-abajo.png");   // nueva casa agregada
+		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
+		this.arbolpequeño = Herramientas.cargarImagen("arbol-pequeño.png");  // arbol = arbol pequeño
+		
 	}
 
 	public void generarObstaculo(Entorno e) {
-		e.dibujarImagen(casainvertida, x, y, angulo, 0.20);
-//		e.dibujarImagen(arbol, 500, 230, angulo, 0.25);
+		// CASA DE ARRIBA
+		e.dibujarImagen(casadearriba, 155, 95, angulo, 0.40); // posición en X, posición en Y, ángulo, tamaño
+		// CASA DEL MEDIO
+    	e.dibujarImagen(casadelmedio, 643, 150, angulo, 0.38);
+    	// CASA DE ABAJO
+    	e.dibujarImagen(casadeabajo, 61, 410, angulo, 0.45);
+    	// ARBOL GRANDE
+    	e.dibujarImagen(arbolgrande, 345, 317, angulo, 1.5);
+    	// ARBOL PEQUEÑO
+    	e.dibujarImagen(arbolpequeño, 690, 470, angulo, 1.5);     
 	}
-
-	public void dibujarObstaculo (Entorno e) {
-//		e.dibujarImagen(casa, 600, 200, angulo, 0.20);
-//		e.dibujarImagen(arbol, 400, 400, angulo, 0.25);
-	}
-
-	public void dibujarCasaYArbol (Entorno e) {
-//		e.dibujarImagen(casainvertida, 450, 500, angulo, 0.20);
-//		e.dibujarImagen(arbol, 300, 630, angulo, 0.25);
-	}
-
+	 
+/*     ACLARACIÓN MÉTODO ANTERIOR → public void generarObstaculo 
+ * 
+ *     X = al AUMENTAR el número la imagen se corre más a la DERECHA, al DISMINUIR el número la imagen se corre más a la IZQUIERDA
+ *     
+       Y = al AUMENTAR el número la imagen se corre más ABAJO, al DISMINUIR el número la imagen se corre más para ARRIBA
+       
+*/	
+	
+	
 	public double getY() {
 		return y;
 	}

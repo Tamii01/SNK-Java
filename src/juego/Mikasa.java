@@ -34,7 +34,7 @@ public class Mikasa {
 		this.imgIzquierda = Herramientas.cargarImagen("mikasa-camina-izq-pizq.png");
 		this.ImgAbajo = Herramientas.cargarImagen("mikasa-camina-abajo-pder.png");
 		this.ImgArriba = Herramientas.cargarImagen("mikasa-camina-arriba-pder.png");
-		this.ImgQuieta = Herramientas.cargarImagen("mikasa-quieta.png");
+		this.ImgQuieta = Herramientas.cargarImagen("mikasa-quieta.png"); 
 	}
 
 	public void dibujar(Entorno o) {
