@@ -82,14 +82,19 @@ public class Juego extends InterfaceJuego {
 		}
 		
 		if (entorno.estaPresionada('w') && (mikasa.chocasteConEntornoSuperior())
-				&& (mikasa.chocasteConEntornoDerecho())) {
-			mikasa.avanzar(entorno);
-		}
-
-		if (entorno.estaPresionada('s') && (mikasa.chocasteConEntornoInferior())
+				&& (mikasa.chocasteConEntornoDerecho())
+				&& (mikasa.chocasteConEntornoInferior())
 				&& (mikasa.chocasteConEntornoIzquierdo())) {
-			mikasa.retroceder(entorno);
-		}
+			mikasa.avanzar(entorno);
+	} if (!mikasa.chocasteConEntornoSuperior()){
+		mikasa.retroceder(entorno);
+	}if (!mikasa.chocasteConEntornoDerecho()){
+		mikasa.retroceder(entorno);
+	}if (!mikasa.chocasteConEntornoInferior()) {
+		mikasa.retroceder(entorno);
+	}if (!mikasa.chocasteConEntornoIzquierdo()) {
+		mikasa.retroceder(entorno);
+	}
 
 		if (entorno.estaPresionada('d') ) {
 			mikasa.rotarHaciaDerecha(entorno);
