@@ -121,8 +121,7 @@ public class Juego extends InterfaceJuego {
 		}
 		if (kyojin.chocasteCon(arbolGrande)) { 
 			kyojin.cambiarDeDireccion();
-		}
-																				// Anotación para que puedan entender un poco mejor lo que pensé, les dejo de ejemplo el primero:
+		}																		// Anotación para que puedan entender un poco mejor lo que pensé, les dejo de ejemplo el primero:
 		if (kyojin.getX() > mikasa.getX() && kyojin.getY() > mikasa.getY()) {	// Si la X del Kyojin es MAYOR a la X de Mikasa && la Y del Kyojin es MAYOR a la Y de Mikasa
 			kyojin.perseguirAMikasaIzqSup(mikasa);							    //              K(x+)                     M(x-)              K(y+)                     M(y-)				
 		}																		// Si imaginan un gráfico con coordenadas X e Y (pueden dibujarlo para entender mejor)
@@ -132,27 +131,31 @@ public class Juego extends InterfaceJuego {
 		if (kyojin.getX() < mikasa.getX() && kyojin.getY() < mikasa.getY()) {					
 			kyojin.perseguirAMikasaDerInf(mikasa);														
 		}
-
 		if (kyojin.getX() < mikasa.getX() && kyojin.getY() > mikasa.getY()) {
 			kyojin.perseguirAMikasaDerSup(mikasa);
 		}
-
 		if (kyojin.getX() > mikasa.getX() && kyojin.getY() < mikasa.getY()) {
 			kyojin.perseguirAMikasaIzqInf(mikasa);
 		}
-
 		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.rotarHaciaIzquierda(entorno);
 			//mikasa.caminarHaciaIzquierda(entorno);
 		}
-		if (entorno.estaPresionada('w') && (mikasa.chocasteConEntornoSuperior())) {
+		if (entorno.estaPresionada('w') && (mikasa.chocasteConEntornoSuperior())
+				&& (mikasa.chocasteConEntornoDerecho())
+				&& (mikasa.chocasteConEntornoInferior())
+				&& (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.avanzar(entorno);
-			//mikasa.caminarHaciaArriba(entorno);
-		}
-		if (entorno.estaPresionada('s') && (mikasa.chocasteConEntornoInferior()) && (mikasa.chocasteConEntornoIzquierdo())) {
+		} if (!mikasa.chocasteConEntornoSuperior()){
 			mikasa.retroceder(entorno);
-			//mikasa.caminarHaciaAbajo(entorno);
+		}if (!mikasa.chocasteConEntornoDerecho()){
+			mikasa.retroceder(entorno);
+		}if (!mikasa.chocasteConEntornoInferior()) {
+			mikasa.retroceder(entorno);
+		}if (!mikasa.chocasteConEntornoIzquierdo()) {
+			mikasa.retroceder(entorno);
 		}
+
 		if (entorno.estaPresionada('d') ) {
 			mikasa.rotarHaciaDerecha(entorno);
 			//mikasa.caminarHaciaDerecha(entorno);
