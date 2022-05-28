@@ -141,10 +141,7 @@ public class Juego extends InterfaceJuego {
 			kyojin.perseguirAMikasaIzqInf(mikasa);
 		}
 
-		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo() && (mikasa.chocasteConEntornoDerecho())
-				&& (mikasa.chocasteConEntornoInferior())
-				&& (mikasa.chocasteConEntornoIzquierdo())) {
-
+		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.rotarHaciaIzquierda(entorno);
 			//mikasa.caminarHaciaIzquierda(entorno);
 		}
