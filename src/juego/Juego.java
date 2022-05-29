@@ -15,7 +15,7 @@ public class Juego extends InterfaceJuego {
 	private Kyojin[] kyojines;
 	private Proyectil disparo;
 	//	private Obstaculo[] obstaculos;
-	private Obstaculo casaDeArriba, casaDelMedio, casaDeAbajo, arbolPequeño, arbolGrande;
+	private Obstaculo casaDeArriba, casaDelMedio, casaDeAbajo, arbolPequeño, arbolGrande; // por qué no usan un array?
 
 	private Image fondo;
 
