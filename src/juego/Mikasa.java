@@ -21,9 +21,8 @@ public class Mikasa {
 	private Image ImgAbajo;
 	private Image ImgArriba;
 	private Image ImgQuieta;
-	private String direccion;
 	
-	private Proyectil disparo;
+	public Proyectil proyectil;
 
 	public Mikasa(double x, double y, double velocidad, double alto, double ancho) {
 		this.x = x;
@@ -32,7 +31,6 @@ public class Mikasa {
 		this.ancho = ancho;
 		this.alto = alto;
 		this.angulo = 0;
-		this.direccion = "izquierda";
 
 		this.imgDerecha = Herramientas.cargarImagen("mikasa-camina-der-pizq.png");
 		this.imgIzquierda = Herramientas.cargarImagen("mikasa-camina-izq-pizq.png");
@@ -41,10 +39,51 @@ public class Mikasa {
 		this.ImgQuieta = Herramientas.cargarImagen("mikasa-quieta.png"); 
 	}
 
-	public void dibujar(Entorno o) {
-		o.dibujarImagen(ImgQuieta, x, y, angulo);
+	public void dibujar(Entorno e) {
+		e.dibujarImagen(ImgQuieta, x, y, angulo);
+	}
+	
+	public void caminarHaciaIzquierda(Entorno e) {
+		x -= velocidad;
+		mirarHaciaLaIzquierda(e);
 	}
 
+	public void caminarHaciaDerecha(Entorno e) {
+		x += velocidad;
+		mirarHaciaLaDerecha(e);
+	}
+
+	public void caminarHaciaArriba(Entorno e) {
+		y -= velocidad;
+		mirarHaciaArriba(e);
+	}
+
+	public void caminarHaciaAbajo(Entorno e) {
+		y += velocidad;
+		mirarHaciaAbajo(e);
+	}
+	
+	public void atacar(Entorno e) {
+		
+		proyectil = new Proyectil(this.x + this.ancho / 2 + 20, this.y, this.angulo, 0);
+
+		if (this.x > 400 && this.y > 300) {
+			proyectil.dispararIzqInf(e);
+		}
+
+		if (this.x < 400 && this.y < 300) {
+			proyectil.dispararDerSup(e);
+		}
+
+		if (this.x > 400 && this.y < 300) {
+			proyectil.dispararIzqSup(e);
+		}
+
+		if (this.x < 400 && this.y > 300) {
+			proyectil.dispararDerInf(e);
+		}
+	}
+	
 	public boolean chocasteCon(Obstaculo o) {
 		return	x - alto / 2 >= o.getX() - o.getAncho() / 2 && 
 				x + alto / 2 <= o.getX() + o.getAncho() / 2 &&
@@ -64,46 +103,22 @@ public class Mikasa {
 		x+=velocidad;
 	}
 
-	private void mirarHaciaLaIzquierda(Entorno o) {
-		o.dibujarImagen(imgIzquierda, x, y, angulo);
+	private void mirarHaciaLaIzquierda(Entorno e) {
+		e.dibujarImagen(imgIzquierda, x, y, angulo);
 	}
 
-	public void mirarHaciaLaDerecha(Entorno o) {
-		o.dibujarImagen(imgDerecha, x, y, angulo);
+	public void mirarHaciaLaDerecha(Entorno e) {
+		e.dibujarImagen(imgDerecha, x, y, angulo);
 	}
 
-	public void mirarHaciaArriba(Entorno o) {
-		o.dibujarImagen(ImgArriba, x, y, angulo);
+	public void mirarHaciaArriba(Entorno e) {
+		e.dibujarImagen(ImgArriba, x, y, angulo);
 	}
 
-	public void mirarHaciaAbajo(Entorno o) {
-		o.dibujarImagen(ImgAbajo, x, y, angulo);
+	public void mirarHaciaAbajo(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
 	}
 
-	//	public void caminarHaciaIzquierda(Entorno e) {
-	//		this.direccion = "izquierda";
-	//		x -= velocidad;
-	//		mirarHaciaLaIzquierda(e);
-	//	}
-	//
-	//	public void caminarHaciaDerecha(Entorno e) {
-	//		this.direccion = "derecha";
-	//		x += velocidad;
-	//		mirarHaciaLaDerecha(e);
-	//	}
-	//
-	//	public void caminarHaciaArriba(Entorno e) {
-	//		this.direccion = "arriba";
-	//		y -= velocidad;
-	//		mirarHaciaArriba(e);
-	//	}
-	//
-	//	public void caminarHaciaAbajo(Entorno e) {
-	//		this.direccion = "abajo";
-	//		y += velocidad;
-	//		mirarHaciaAbajo(e);
-	//	}
-	
 	public void rotarHaciaIzquierda(Entorno e) {
 		angulo -= 0.05;
 		mirarHaciaLaIzquierda(e);
@@ -120,7 +135,7 @@ public class Mikasa {
 		mirarHaciaArriba(e);
 	}
 
-	public void retroceder(Entorno e) {
+	public void NoAvanzar(Entorno e) {
 		x -= velocidad * Math.cos(angulo);
 		y -= velocidad * Math.sin(angulo);
 		mirarHaciaAbajo(e);

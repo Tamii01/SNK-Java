@@ -7,16 +7,16 @@ import entorno.Herramientas;
 
 public class Obstaculo { 
 	
-	private double x;           
-	private double y;          
-	private double ancho;    
-	private double alto;
-	private double anchoArbolPequeño;
+	private int x;           
+	private int y;          
+	private int ancho;    
+	private int alto;
+	private int anchoArbolPequeño;
 
 	private double angulo;
 	private Image casadearriba, casadelmedio, casadeabajo, arbolgrande, arbolpequeño;
 	
-	public Obstaculo(double x, double y) {  
+	public Obstaculo(int x, int y) {  
 		this.x = x;
 		this.y = y;
 		this.ancho = 250;  
@@ -29,9 +29,9 @@ public class Obstaculo {
 		this.arbolpequeño = Herramientas.cargarImagen("arbol-pequeño.png");  // arbol = arbol pequeño
 		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
 	}
-
+	
 	public void casaDeArriba(Entorno e) {
-		e.dibujarImagen(casadearriba, x, y, angulo, 0.40); // posición en X, posición en Y, ángulo, tamaño   
+		e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
 	}
 	
 	public void casaDelMedio(Entorno e) {
