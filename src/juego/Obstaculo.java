@@ -30,6 +30,12 @@ public class Obstaculo {
 		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
 	}
 	
+//	public void dibujar(Entorno e, String tipo) {
+//		if (tipo.equals("casa")) {
+//			
+//		}
+//	}
+	
 	public void casaDeArriba(Entorno e) {
 		e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
 	}

@@ -43,25 +43,25 @@ public class Mikasa {
 		e.dibujarImagen(ImgQuieta, x, y, angulo);
 	}
 	
-	public void caminarHaciaIzquierda(Entorno e) {
-		x -= velocidad;
-		mirarHaciaLaIzquierda(e);
-	}
+//	public void caminarHaciaIzquierda(Entorno e) {
+//		x -= velocidad;
+//		mirarHaciaLaIzquierda(e);
+//	}
 
-	public void caminarHaciaDerecha(Entorno e) {
-		x += velocidad;
-		mirarHaciaLaDerecha(e);
-	}
-
-	public void caminarHaciaArriba(Entorno e) {
-		y -= velocidad;
-		mirarHaciaArriba(e);
-	}
-
-	public void caminarHaciaAbajo(Entorno e) {
-		y += velocidad;
-		mirarHaciaAbajo(e);
-	}
+//	public void caminarHaciaDerecha(Entorno e) {
+//		x += velocidad;
+//		mirarHaciaLaDerecha(e);
+//	}
+//
+//	public void caminarHaciaArriba(Entorno e) {
+//		y -= velocidad;
+//		mirarHaciaArriba(e);
+//	}
+//
+//	public void caminarHaciaAbajo(Entorno e) {
+//		y += velocidad;
+//		mirarHaciaAbajo(e);
+//	}
 	
 	public void atacar(Entorno e) {
 		
@@ -145,6 +145,7 @@ public class Mikasa {
 		return this.x > 20;							// compara la posicion de mikasa con el limite del entorno izquierdo
 	}
 
+	// estásDentroDelLímiteDerecho()
 	public boolean chocasteConEntornoDerecho() {
 		return this.x < 780;						// compara la posicion de mikasa con el limite del entorno derecho
 	}

@@ -10,11 +10,10 @@ public class Proyectil {
 	private double x;
 	private double y;
 	
-	
 	private double velocidad;
 	private double angulo;
 	private double tamaño;
-	private Image proyectil;
+	private Image proyectil; // img
 	
 	public Proyectil(double x, double y, double velocidad, double angulo) {
 		this.x = x;

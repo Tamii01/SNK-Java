@@ -13,8 +13,8 @@ public class Juego extends InterfaceJuego {
 	private Mikasa mikasa;
 	private Kyojin kyojin;
 	private Obstaculo casaDeArriba, casaDelMedio, casaDeAbajo, arbolPequeño, arbolGrande;
-//	private Kyojin[] kyojines;
-//	private Proyectil disparo;
+	private Kyojin[] kyojines;
+	private Proyectil disparo;
 //	private Obstaculo[] obstaculos;
 	private Image fondo;
 
@@ -35,7 +35,7 @@ public class Juego extends InterfaceJuego {
 		arbolGrande = new Obstaculo(345, 450);
 		fondo = Herramientas.cargarImagen("fondo-del-juego.png");
 //		disparo = new Proyectil(400,300,2,0);
-//		kyojines = new Kyojin[4];
+		kyojines = new Kyojin[4];
 //		obstaculos = new Obstaculo[5];
 		
 		puntaje = 0;
@@ -57,10 +57,10 @@ public class Juego extends InterfaceJuego {
 		arbolGrande.arbolGrande(entorno);
 		kyojin.perseguirAMikasa(mikasa);
 		//arreglar
-		//				for(int i=0; i< kyojines.length; i++) {
-		//					kyojines[i] = new Kyojin (Math.random() * entorno.ancho(), Math.random() * entorno.alto(), 0.5, 0.18);
-		//					kyojines[i].dibujar(entorno);
-		//				}
+						for(int i=0; i< kyojines.length; i++) {
+							kyojines[i] = new Kyojin (Math.random() * entorno.ancho(), Math.random() * entorno.alto(), 0.5, 0.18, 0);
+							kyojines[i].dibujar(entorno);
+						}
 
 		//		entorno.cambiarFont("sans", 15, Color.WHITE);
 		//		entorno.escribirTexto("Posicion en x de Mikasa: " + mikasa.getX(), 500, 100);
@@ -168,6 +168,7 @@ public class Juego extends InterfaceJuego {
 
 		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
 			mikasa.atacar(entorno);
+//			mikasa.disparar();
 		}
 	}
 
