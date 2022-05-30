@@ -10,6 +10,7 @@
 // _italic_
 
 == Descripción
+Como una de los primeros "problemas" podemos enumerar, a la hora de modificar tanto el movimiento como el choque con el entorno, la dificultad de Mikasa atravesando el mismo. Como solución, logramos comparar la posición del personaje con x e y ya determinadas “cercanas” a los bordes del entorno, si estas eran las mismas, Mikasa no iba a poder avanzar, limitando el recorrido y haciendo que “rebote” del entorno usando el metodo de avanzar a la inversa(en vez de sumar en x e y, ir restando).
 
 == Implementación
 
