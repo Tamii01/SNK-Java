@@ -7,22 +7,22 @@ import entorno.Entorno;
 
 public class Kyojin {
 
-	private double x;
-	private double y;	
+	private double x,y;
 	private double velocidad;	
 	private double tamaño;
 	private Image titan;
-	
 	private double angulo;
 
 
-	public Kyojin (double x, double y, double velocidad, double tamaño) {
+	public Kyojin (double x, double y, double velocidad, double tamaño,double angulo) {
+		this.angulo=angulo;
 		this.x = x;
 		this.y = y;
-		this.velocidad = velocidad;
+		this.velocidad = 0.5;
 		this.tamaño = tamaño;
 		this.titan = Herramientas.cargarImagen("titan-bestia.png");
 	}
+	
 
 	public void dibujar(Entorno a) {
 		a.dibujarImagen(titan, x, y, angulo, tamaño);
@@ -72,13 +72,13 @@ public class Kyojin {
 	}
 	
 	public void cambiarDeDireccion() {
-		angulo += Math.PI / 2;
+		angulo -= Math.PI/2;
+		
 	}
 
 	public void acelerar() {
-		velocidad += 0.11;
+		velocidad += 0.5;
 	}
-
 	
 	public double getX() {
 		return x;

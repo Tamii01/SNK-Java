@@ -28,7 +28,7 @@ public class Juego extends InterfaceJuego {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600); 
 
 		mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 5, 60, 20); //x, y, velocidad, alto, ancho
-		kyojin = new Kyojin(100, 280, 5, 0.15);  //x, y, velocidad, tamaño
+		kyojin = new Kyojin(100, 280, 5, 0.15,0);  //x, y, velocidad, tamaño, angulo
 		kyojines = new Kyojin[4];
 		casaDeArriba = new Obstaculo(155,95);
 		casaDelMedio = new Obstaculo(643,150);
@@ -57,11 +57,7 @@ public class Juego extends InterfaceJuego {
 		arbolGrande.arbolGrande(entorno);
 		
 		
-		//arreglar
-		for(int i=0; i< kyojines.length; i++) {
-			kyojines[i] = new Kyojin (Math.random() * entorno.ancho(), Math.random() * entorno.alto(), 0.5, 0.18);
-			kyojines[i].dibujar(entorno);
-		}
+		
 
 		entorno.cambiarFont("sans", 15, Color.WHITE);
 		entorno.escribirTexto("Posicion en x de Mikasa: " + mikasa.getX(), 500, 100);
@@ -75,7 +71,13 @@ public class Juego extends InterfaceJuego {
 		entorno.cambiarFont("sans", 24, Color.WHITE);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
 		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
+		
 
+		for(int i=0; i< kyojines.length; i++) {
+			kyojines[i] = new Kyojin (Math.random() * entorno.ancho(), Math.random() * entorno.alto(), 0.5, 0.18,0);
+			kyojines[i].dibujar(entorno);
+			System.out.println();
+		}
 		if (kyojin.chocaEntorno(entorno)) {
 			kyojin.cambiarDeDireccion();
 		}
@@ -147,13 +149,13 @@ public class Juego extends InterfaceJuego {
 				&& (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.avanzar(entorno);
 		} if (!mikasa.chocasteConEntornoSuperior()){
-			mikasa.retroceder(entorno);
+			mikasa.NoAvanzar(entorno);
 		}if (!mikasa.chocasteConEntornoDerecho()){
-			mikasa.retroceder(entorno);
+			mikasa.NoAvanzar(entorno);
 		}if (!mikasa.chocasteConEntornoInferior()) {
-			mikasa.retroceder(entorno);
+			mikasa.NoAvanzar(entorno);
 		}if (!mikasa.chocasteConEntornoIzquierdo()) {
-			mikasa.retroceder(entorno);
+			mikasa.NoAvanzar(entorno);
 		}
 
 		if (entorno.estaPresionada('d') ) {

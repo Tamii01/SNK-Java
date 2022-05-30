@@ -120,7 +120,7 @@ public class Mikasa {
 		mirarHaciaArriba(e);
 	}
 
-	public void retroceder(Entorno e) {
+	public void NoAvanzar(Entorno e) {
 		x -= velocidad * Math.cos(angulo);
 		y -= velocidad * Math.sin(angulo);
 		mirarHaciaAbajo(e);
