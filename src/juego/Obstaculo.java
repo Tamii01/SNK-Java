@@ -11,17 +11,15 @@ public class Obstaculo {
 	private int y;          
 	private int ancho;    
 	private int alto;
-	private int anchoArbolPequeño;
 
 	private double angulo;
 	private Image casadearriba, casadelmedio, casadeabajo, arbolgrande, arbolpequeño;
 	
-	public Obstaculo(int x, int y) {  
+	public Obstaculo(int x, int y, String tipo) {  
 		this.x = x;
 		this.y = y;
 		this.ancho = 250;  
 		this.alto = 250;  
-		this.anchoArbolPequeño = 180;
 		this.angulo = 0;                                                     // ANOTACION VIEJA = ANOTACION NUEVA  
 		this.casadearriba = Herramientas.cargarImagen("casa-de-arriba.png"); // casa invertida = casa de arriba 
 		this.casadelmedio = Herramientas.cargarImagen("casa-del-medio.png"); // casa = casa del  medio
@@ -29,6 +27,26 @@ public class Obstaculo {
 		this.arbolpequeño = Herramientas.cargarImagen("arbol-pequeño.png");  // arbol = arbol pequeño
 		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
 	}
+	
+	
+//	public void dibujar(Entorno e, String tipo) {
+//		if (tipo.equals("casaDeArriba")) {
+//			e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
+//		}
+//		if (tipo.equals("casaDelMedio")) {
+//			e.dibujarImagen(casadelmedio, x, y, angulo, 0.38);
+//		}
+//		if (tipo.equals("casaDeAbajo")) {
+//			e.dibujarImagen(casadeabajo, x, y, angulo, 0.45);
+//		}
+//		if (tipo.equals("arbolPequeño")) {
+//			e.dibujarImagen(arbolpequeño, x, y, angulo, 1.5); 
+//		}
+//		if (tipo.equals("arbolGrande")) {
+//			e.dibujarImagen(arbolgrande, x, y, angulo, 1.5);
+//		}
+//	}
+
 	
 	public void casaDeArriba(Entorno e) {
 		e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
@@ -49,13 +67,13 @@ public class Obstaculo {
 	public void arbolGrande(Entorno e) {
 		e.dibujarImagen(arbolgrande, x, y, angulo, 1.5);
 	}
+	
+	public double getX() {
+		return x;
+	}
 
 	public double getY() {
 		return y;
-	}
-
-	public double getX() {
-		return x;
 	}
 
 	public double getAlto() {
@@ -66,7 +84,5 @@ public class Obstaculo {
 		return ancho;
 	}
 	
-	public double getAnchoArbolPequeño() {
-		return anchoArbolPequeño;
-	}
+
 }

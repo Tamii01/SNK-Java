@@ -10,30 +10,21 @@ public class Kyojin {
 	private double x,y;
 	private double velocidad;	
 	private double tamaño;
-	private Image titan;
-<<<<<<< HEAD
-=======
-	private double angulo;
->>>>>>> 232d89a9f2b8756ad11da9c1920f9d092b8ff07e
+	private Image ImgTitan;
 
 	private double angulo;
 
-<<<<<<< HEAD
 	public Kyojin (double x, double y, double velocidad, double tamaño, double angulo) {
-=======
-	public Kyojin (double x, double y, double velocidad, double tamaño,double angulo) {
 		this.angulo=angulo;
->>>>>>> 232d89a9f2b8756ad11da9c1920f9d092b8ff07e
 		this.x = x;
 		this.y = y;
-		this.velocidad = 0.5;
-		this.tamaño = tamaño;
-		this.titan = Herramientas.cargarImagen("titan-bestia.png");
+		this.velocidad = velocidad;
+		this.tamaño = 0.15;
+		this.ImgTitan = Herramientas.cargarImagen("titan-bestia.png");
 	}
-	
 
 	public void dibujar(Entorno e) {
-		e.dibujarImagen(titan, x, y, angulo, tamaño);
+		e.dibujarImagen(ImgTitan, x, y, angulo, tamaño);
 	}
 
 	public void mover() {
@@ -81,46 +72,44 @@ public class Kyojin {
 		}
 	}
 
-	public boolean chocasteConEntornoIzquierdo() {
+	// estásDentroDelLímiteDerecho()
+	public boolean estasDentroDelLimiteIzquierdo() {
 		return this.x > 20;							// compara la posicion de mikasa con el limite del entorno izquierdo
 	}
 
-	public boolean chocasteConEntornoDerecho() {
+	public boolean estasDentroDelLimiteDerecho() {
 		return this.x < 780;						// compara la posicion de mikasa con el limite del entorno derecho
 	}
 
-	public boolean chocasteConEntornoSuperior() {
+	public boolean estasDentroDelLimiteSuperior() {
 		return this.y > 29;							// compara la posicion de mikasa con el limite del entorno superior
 	}
 
-	public boolean chocasteConEntornoInferior() {
+	public boolean estasDentroDelLimiteInferior() {
 		return this.y < 580;						// compara la posicion de mikasa con el limite del entorno inferior
 	}	
 
 	public void cambiarDeDireccion() {
 		angulo -= Math.PI/2;
-		
 	}
 
 	public void acelerar() {
-<<<<<<< HEAD
 		velocidad += 0.05;
 	}
 
-=======
-		velocidad += 0.5;
-	}
-	
->>>>>>> 232d89a9f2b8756ad11da9c1920f9d092b8ff07e
 	public double getX() {
-		return x;
+		return this.x;
 	}
 
 	public double getY() {
-		return y;
+		return this.y;
 	}
 
 	public double getAngulo() {
-		return angulo;
+		return this.angulo;
+	}
+	
+	public double getTamaño() {
+		return this.tamaño;
 	}
 }

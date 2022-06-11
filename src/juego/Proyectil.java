@@ -9,72 +9,51 @@ public class Proyectil {
 
 	private double x;
 	private double y;
-	
-	
-	private double velocidad;
+
 	private double angulo;
 	private double tamaño;
-	private Image proyectil;
+	private Image ImgProyectilIzquierda, ImgProyectilDerecha;
 	
-	public Proyectil(double x, double y, double velocidad, double angulo) {
+	public Proyectil(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.velocidad = 2;
 		this.angulo = 0;
 		this.tamaño = 0.05;
-		this.proyectil = Herramientas.cargarImagen("disparo.png"); //Cambiar nombre de la imagen}
+		this.ImgProyectilIzquierda = Herramientas.cargarImagen("disparo-derecha.png");
+		this.ImgProyectilDerecha = Herramientas.cargarImagen("disparo-derecha.png");
+	}
+	
+	public void dibujarIzquierda(Entorno e) {
+		e.dibujarImagen(ImgProyectilIzquierda, x, y, angulo, tamaño);
+	}
+	
+	public void dibujarDerecha(Entorno e) {
+		e.dibujarImagen(ImgProyectilDerecha, x, y, angulo, tamaño);
+	}
+	
+//	sacado del movimiento de la navecita
+	public void girar (double modificador) {
 		
-	}
-
-//	public void dibujarr(Entorno e) {
-//		if (mikasa.getX() > 400 && mikasa.getY() > 600) {
-//			e.dibujarImagen(proyectil, x, y, angulo, 0.05);
-//			this.x--;
-//			this.y--;
-//		}
-//		
-//		if (mikasa.getX() < 400 && mikasa.getY() < 600) {
-//			e.dibujarImagen(proyectil, x, y, angulo, 0.05);
-//			this.x++;
-//			this.y++;
-//		}
-//		
-//		if (mikasa.getX() > 400 && mikasa.getY() < 600) {
-//			e.dibujarImagen(proyectil, x, y, angulo, 0.05);
-//			this.x--;
-//			this.y++;
-//		}
-//		
-//		if (mikasa.getX() < 400 && mikasa.getY() > 600) {
-//			e.dibujarImagen(proyectil, x, y, angulo, 0.05);
-//			this.x++;
-//			this.y--;
-//		}
-//
-//	}
-	
-	public void dispararDerSup(Entorno e) {
-		e.dibujarImagen(proyectil, x, y, angulo, tamaño);
-		x+=velocidad * Math.cos(angulo);
-		y-=velocidad * Math.sin(angulo);
+		this.angulo = this.angulo + modificador;
+		if(this.angulo < 0) {
+			this.angulo +=2*Math.PI;
+		}
+		if(this.angulo > 2*Math.PI) {
+			this.angulo -=2*Math.PI;
+		}
 	}
 	
-	public void dispararDerInf(Entorno e) {
-		e.dibujarImagen(proyectil, x, y, angulo, tamaño);
-		x+=velocidad * Math.cos(angulo);
-		y+=velocidad * Math.sin(angulo);
+	//multiplicado *7 para que su velocidad aumente
+	public void moverDerecha(Entorno e) {
+		this.x += Math.cos(angulo)*7;
+		this.y += Math.sin(angulo)*7;
+		dibujarDerecha(e);
 	}
 	
-	public void dispararIzqSup(Entorno e) {
-		e.dibujarImagen(proyectil, x, y, angulo, tamaño);
-		y-=velocidad * Math.cos(angulo);
-		x-=velocidad * Math.sin(angulo);
-	}
-	
-	public void dispararIzqInf(Entorno e) {
-		e.dibujarImagen(proyectil, x, y, angulo, tamaño);
-		x-=velocidad * Math.cos(angulo);
-		y+=velocidad * Math.sin(angulo);
+	public void moverIzquierda(Entorno e) {
+		this.x -= Math.cos(angulo)*7;
+		this.y -= Math.sin(angulo)*7;
+		dibujarIzquierda(e);
 	}
 	
 	public double getX() {
@@ -84,4 +63,10 @@ public class Proyectil {
 	public double getY() {
 		return this.y;
 	}
+	
+	public double getTamaño() {
+		return this.tamaño;
+	}
+
+	
  }
