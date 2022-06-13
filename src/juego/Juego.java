@@ -28,7 +28,7 @@ public class Juego extends InterfaceJuego {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600); 
 
-		mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 5, 60, 20); //x(400), y(300), velocidad, alto, ancho
+		mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 5, 60, 20,0); //x(400), y(300), velocidad, alto, ancho
 		kyojin = new Kyojin(100, 240, 0.5, 0.15, 0);  //x, y, velocidad, tamaño, angulo
 		casaDeArriba = new Obstaculo(155,95, "casaDeArriba");
 		casaDelMedio = new Obstaculo(643,150, "casaDelMedio");
@@ -132,52 +132,8 @@ public class Juego extends InterfaceJuego {
 		if (mikasa.chocasteCon(arbolGrande)) { 
 			this.mikasa.chocasteConObstaculo();
 		}
-
-		//si se presiona la tecla espacio y el disparo está null
-		//se genera un nuevo disparo
-		if (entorno.estaPresionada(entorno.TECLA_ESPACIO) && disparo == null) {
-			this.disparo = mikasa.disparar();				
-		}
-		
-		//mientras el disparo sea distinto de null, sigue con las demás instrucciones
-		if (this.disparo !=null) {
-			
-			//si mikasa va hacia la izquierda
-			//el disparo se dibuja y se empieza
-			//a mover. --> fix
-			if (mikasa.getX() <= 400) {
-				this.disparo.dibujarIzquierda(entorno);
-				this.disparo.moverIzquierda(entorno);
-				this.disparo.girar(mikasa.getAngulo());		//fix
-			}
-			
-			//si mikasa va hacia la derecha
-			//el disparo se dibuja y se empieza
-			//a mover. --> fix
-			if (mikasa.getX() >= 400) {
-				this.disparo.dibujarDerecha(entorno);
-				this.disparo.moverDerecha(entorno);
-				disparo.girar(mikasa.getAngulo()); 			//fix
-			}
-			
-			//si el disparo pasa los limites del 
-			//entorno, entonces se vuelve null
-			if(disparo.getX() > 800 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 10 ) {
-				this.disparo = null;
-			}
-			
-			//la idea es que si es true cuando mikasa agarra el suero, este se elimine
-			if (mikasa.agarroSuero(suero)) {
-				this.suero = null;
-			}
-	
-		}
-
-//--------------------------CONDICIONES KYOJIN---------------------------------------
-		
-		//mientras el kyojin sea distinto de null, sigue con las demás instrucciones
 		if (kyojines !=null) { 
-				
+			
 			//acá recorro el array de kyojines y voy haciendo que se dibujen, muevan, persigan a mikasa, etc. Lo ideal sería
 			//poder usar el array de objetos en vez de poner cada cosa por separado, pero lo del array de objetos, el que 
 			//intenté hacer, me tiraba error. Está comentado lo que intenté hacer, arriba de todo.
@@ -223,24 +179,65 @@ public class Juego extends InterfaceJuego {
 				}	
 			}
 		}
+		//si se presiona la tecla espacio y el disparo está null
+		//se genera un nuevo disparo
+		if (entorno.estaPresionada(entorno.TECLA_ESPACIO) && disparo == null) {
+			this.disparo = mikasa.disparar();				
+		}
+		
+		//mientras el disparo sea distinto de null, sigue con las demás instrucciones
+		if (this.disparo !=null) {	
+				this.disparo.dibujarse(entorno);
+				this.disparo.avanzar(entorno);	
+				int i = colisionaKyojin(disparo.getX(), disparo.getY(), disparo.getTamaño());
+				if (i != -1) {
+					kyojines[i] = null;
+				}
+			}
+			
+			//si el disparo pasa los limites del 
+			//entorno, entonces se vuelve null
+			if(disparo.getX() > 800 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 10 ) {
+				this.disparo = null;
+			}
+			
+			//la idea es que si es true cuando mikasa agarra el suero, este se elimine
+			if (mikasa.agarroSuero(suero)) {
+				this.suero = null;
+			}
+	
+		
+
+//--------------------------CONDICIONES KYOJIN---------------------------------------
+		
+		//mientras el kyojin sea distinto de null, sigue con las demás instrucciones
+		
 	}
 		
 //------------------------------------TERMINA TICK------------------------------------------------	
 
 	//hay que arreglar la colision, pero la idea es recorrer el array de kyojines, si la X e Y de cada kyojin colisiona
 	//con el disparo, este mismo se elimina y se le suman 10 puntos
-	public void disparoMataKyojin() {
-		for (int i = 0; i<kyojines.length; i++) {
-			if(disparo !=null && 
-			   disparo.getX() + disparo.getTamaño() <= kyojines[i].getX() - kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getX() - disparo.getTamaño() >= kyojines[i].getX() + kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getY() - disparo.getTamaño() <= kyojines[i].getY() - kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getY() + disparo.getTamaño() >= kyojines[i].getY() + kyojines[i].getTamaño() / 2 + 20) {
-			   this.kyojines[i] = null;
-			   this.disparo = null;
-			   puntaje +=10;
-			}
+//	public void disparoMataKyojin() {
+//		for (int i = 0; i<kyojines.length; i++) {
+//			if(disparo !=null && 
+//			   disparo.getX() + disparo.getTamaño() <= kyojines[i].getX() - kyojines[i].getTamaño() / 2 + 20 &&
+//			   disparo.getX() - disparo.getTamaño() >= kyojines[i].getX() + kyojines[i].getTamaño() / 2 + 20 &&
+//			   disparo.getY() - disparo.getTamaño() <= kyojines[i].getY() - kyojines[i].getTamaño() / 2 + 20 &&
+//			   disparo.getY() + disparo.getTamaño() >= kyojines[i].getY() + kyojines[i].getTamaño() / 2 + 20) {
+//			   this.kyojines[i] = null;
+//			   this.disparo = null;
+//			   puntaje +=10;
+//			}
+//		}
+//	}
+	private int colisionaKyojin(double x, double y,double tamaño) {
+		for (int i = 0; i < kyojines.length; i++) {
+			if (kyojines[i] != null
+					&& Math.hypot((kyojines[i].getX() - x), (kyojines[i].getY() - y)) <= kyojines[i].getTamaño())
+				return i;
 		}
+		return -1;
 	}
 	
 	//metodo que contiene un contador para simular que este es el tiempo

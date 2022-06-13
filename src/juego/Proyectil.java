@@ -12,49 +12,33 @@ public class Proyectil {
 
 	private double angulo;
 	private double tamaño;
-	private Image ImgProyectilIzquierda, ImgProyectilDerecha;
+	private Image ImgProyectilDerecha;
 	
-	public Proyectil(double x, double y) {
+	public Proyectil(double x, double y, double angulo) {
 		this.x = x;
 		this.y = y;
-		this.angulo = 0;
+		this.angulo = angulo;
 		this.tamaño = 0.05;
-		this.ImgProyectilIzquierda = Herramientas.cargarImagen("disparo-derecha.png");
 		this.ImgProyectilDerecha = Herramientas.cargarImagen("disparo-derecha.png");
 	}
 	
-	public void dibujarIzquierda(Entorno e) {
-		e.dibujarImagen(ImgProyectilIzquierda, x, y, angulo, tamaño);
-	}
+
 	
-	public void dibujarDerecha(Entorno e) {
+	public void dibujarse(Entorno e) {
 		e.dibujarImagen(ImgProyectilDerecha, x, y, angulo, tamaño);
 	}
 	
 //	sacado del movimiento de la navecita
-	public void girar (double modificador) {
-		
-		this.angulo = this.angulo + modificador;
-		if(this.angulo < 0) {
-			this.angulo +=2*Math.PI;
-		}
-		if(this.angulo > 2*Math.PI) {
-			this.angulo -=2*Math.PI;
-		}
-	}
+
 	
 	//multiplicado *7 para que su velocidad aumente
-	public void moverDerecha(Entorno e) {
+	public void avanzar(Entorno e) {
 		this.x += Math.cos(angulo)*7;
 		this.y += Math.sin(angulo)*7;
-		dibujarDerecha(e);
+		dibujarse(e);
 	}
 	
-	public void moverIzquierda(Entorno e) {
-		this.x -= Math.cos(angulo)*7;
-		this.y -= Math.sin(angulo)*7;
-		dibujarIzquierda(e);
-	}
+
 	
 	public double getX() {
 		return this.x;
