@@ -38,6 +38,7 @@ En esta sección pasaremos a explicar cada clase y que métodos hay dentro de el
 
  * Estos métodos le permiten a mikasa caminar hacia donde ella quiera aumentando o disminuyendo su X e Y dependiendo de donde ella vaya, también recibe una imagen que corresponde a dónde debería mirar ella si va hacia la izquierda, derecha, arriba o abajo.
 
+- **
 
 === *Kyojin*
 - *dibujar* 
@@ -56,6 +57,5 @@ En esta sección pasaremos a explicar cada clase y que métodos hay dentro de el
 
 == Conclusiones
 
-Nuestra conclision final es que aunque hemos tenido muchas dificultades, hemos aprendido que aunque con este tipo de juegos que quizás sean simples, llevan demasiado tiempo. Gracias a este trabajo pudimos entender un mucho mejor objetos, hemos podido implementar gran parte del conocimiento que hemos obtenido durante la cursada y hemos aprendido a usar git. Aunque el trabajo no se haya terminado, lo hemos disfrutado, así como también nos hemos frustrado mucho al ver cómo no nos salian varias cosas, pero hemos aprendido bastante cosas que también por ahí anteriormente no entendiamos muy bien.
-
+Nuestra conclision final es que aunque hemos tenido muchas dificultades, hemos aprendido que con este tipo de juegos que quizás sean simples, llevan demasiado tiempo en desarrollarse. Gracias a este trabajo pudimos entender un mucho mejor objetos, hemos podido implementar gran parte del conocimiento que hemos obtenido durante la cursada y hemos aprendido a usar git. Aunque el trabajo no se haya terminado, lo hemos disfrutado, así como también nos hemos frustrado mucho al ver cómo no nos salian varias cosas, pero hemos obtenido conocimientos nuevos como el de cómo detectar colisiones, hacer que se mueva un personaje, etc. 
 
