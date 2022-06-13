@@ -37,7 +37,7 @@ public class Juego extends InterfaceJuego {
 		arbolGrande = new Obstaculo(345, 450, "arbolGrande");
 		fondo = Herramientas.cargarImagen("fondo-del-juego.png");
 		gameOver = Herramientas.cargarImagen("game-over.png");
-		disparo = null;	
+//		disparo = null;	
 		juegoTerminado = false;
 		kyojines = new Kyojin[4];	
 		suero = new Suero(500,550);
@@ -189,23 +189,23 @@ public class Juego extends InterfaceJuego {
 		if (this.disparo !=null) {	
 				this.disparo.dibujarse(entorno);
 				this.disparo.avanzar(entorno);	
-				int i = colisionaKyojin(disparo.getX(), disparo.getY(), disparo.getTamaño());
-				if (i != -1) {
-					kyojines[i] = null;
-				}
+				
 			}
-			
+		int i = colisionaKyojin(disparo.getX(), disparo.getY(), disparo.getTamaño());
+		if (i != -1) {
+			kyojines[i] = null;
+		}
 			//si el disparo pasa los limites del 
 			//entorno, entonces se vuelve null
-			if(disparo.getX() > 800 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 10 ) {
-				this.disparo = null;
-			}
+			
 			
 			//la idea es que si es true cuando mikasa agarra el suero, este se elimine
 			if (mikasa.agarroSuero(suero)) {
 				this.suero = null;
 			}
-	
+			if(disparo.getX() > 780 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 29 ) {
+				this.disparo = null;
+			}
 		
 
 //--------------------------CONDICIONES KYOJIN---------------------------------------
@@ -234,7 +234,7 @@ public class Juego extends InterfaceJuego {
 	private int colisionaKyojin(double x, double y,double tamaño) {
 		for (int i = 0; i < kyojines.length; i++) {
 			if (kyojines[i] != null
-					&& Math.hypot((kyojines[i].getX() - x), (kyojines[i].getY() - y)) <= kyojines[i].getTamaño())
+					&& Math.hypot((kyojines[i].getX() - x), (kyojines[i].getY() - y)) <= kyojines[i].getTamaño()-tamaño)
 				return i;
 		}
 		return -1;

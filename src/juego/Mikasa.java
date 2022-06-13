@@ -49,9 +49,9 @@ public class Mikasa {
 		if (x - this.ancho >= suero.getX() - suero.getTamaño() / 2 && 
 		   x + this.ancho <= suero.getX() + suero.getTamaño() / 2 && 
 		   y - this.alto >= suero.getY() - suero.getTamaño() / 2 &&
-		   y + this.alto <= suero.getY() + suero.getTamaño() / 2)
-			return true;
-		return false;
+		   y + this.alto <= suero.getY() + suero.getTamaño() / 2) {
+			return true;}return false;
+		
 	}
 	
 	public Proyectil disparar () {
@@ -59,13 +59,7 @@ public class Mikasa {
 		return disparo;
 	}
 	
-	public boolean estaEnLaIzquierda(Proyectil disparo) {
-		return this.x < disparo.getX();
-	}
 	
-	public boolean estaEnLaDerecha(Proyectil disparo) {
-		return this.x > disparo.getX();
-	}
 	
 //	public void caminarHaciaIzquierda(Entorno e) {
 //		x -= velocidad;
