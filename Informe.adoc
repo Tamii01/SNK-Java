@@ -38,12 +38,20 @@ En esta sección pasaremos a explicar cada clase y que métodos hay dentro de el
 
  * Estos métodos le permiten a mikasa caminar hacia donde ella quiera aumentando o disminuyendo su X e Y dependiendo de donde ella vaya, también recibe una imagen que corresponde a dónde debería mirar ella si va hacia la izquierda, derecha, arriba o abajo.
 
-- **
+- *chocasteCon*
+* Este método le permite a Mikasa poder detectar cuándo hay un obstáculo.
+
+- *chocasteConObstaculo* 
+* Método que le informa a Mikasa que no avance al chocar con un obstáculo.
+
+- * *
 
 === *Kyojin*
 - *dibujar* 
+* Este metodo nos permite dibujar al Kyojin dentro del entorno.
 
 - *mover*
+* Le permite moverse al Kyojin dentro del entorno, aumentando y disminuyendo su X e Y 
 
 - *acelerar*
 
