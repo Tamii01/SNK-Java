@@ -12,7 +12,7 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin kyojin;
+//	private Kyojin kyojin; // sacalo
 	private Obstaculo casaDeArriba, casaDelMedio, casaDeAbajo, arbolPequeño, arbolGrande;
 	private Kyojin[] kyojines;
 	private Proyectil disparo;
@@ -191,10 +191,10 @@ public class Juego extends InterfaceJuego {
 				this.disparo.avanzar(entorno);	
 				
 			}
-		int i = colisionaKyojin(disparo.getX(), disparo.getY(), disparo.getTamaño());
-		if (i != -1) {
-			kyojines[i] = null;
-		}
+//		int i = colisionaKyojin(disparo.getX(), disparo.getY(), disparo.getTamaño());
+//		if (i != -1) {
+//			kyojines[i] = null;
+//		}
 			//si el disparo pasa los limites del 
 			//entorno, entonces se vuelve null
 			

@@ -20,7 +20,10 @@ public class Mikasa {
 	private Image ImgAbajo;
 	private Image ImgArriba;
 	private Image ImgQuieta;
+	
+	private boolean modoKyojina;
 
+	// Cuando Mikasa está en modo kyojina, no hace falta mostrar nada
 	public Mikasa(double x, double y, double velocidad, double alto, double ancho,double angulo) {
 		this.x = x;
 		this.y = y;
@@ -163,11 +166,11 @@ public class Mikasa {
 		return this.ancho;
 	}
 
-	public double getAngulo() {
-		return this.angulo;
-	}
-	
-	public double getVelocidad() {
-		return this.velocidad;
-	}
+//	public double getAngulo() {
+//		return this.angulo;
+//	}
+//	
+//	public double getVelocidad() {
+//		return this.velocidad;
+//	}
 }

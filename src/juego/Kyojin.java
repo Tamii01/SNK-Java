@@ -14,6 +14,7 @@ public class Kyojin {
 
 	private double angulo;
 
+	// Se permite que los kyojines se superpongan
 	public Kyojin (double x, double y, double velocidad, double tamaño, double angulo) {
 		this.angulo=angulo;
 		this.x = x;

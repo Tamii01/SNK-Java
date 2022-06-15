@@ -22,8 +22,6 @@ public class Proyectil {
 		this.ImgProyectilDerecha = Herramientas.cargarImagen("disparo-derecha.png");
 	}
 	
-
-	
 	public void dibujarse(Entorno e) {
 		e.dibujarImagen(ImgProyectilDerecha, x, y, angulo, tamaño);
 	}
@@ -35,7 +33,7 @@ public class Proyectil {
 	public void avanzar(Entorno e) {
 		this.x += Math.cos(angulo)*7;
 		this.y += Math.sin(angulo)*7;
-		dibujarse(e);
+//		dibujarse(e);
 	}
 	
 
