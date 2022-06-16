@@ -11,7 +11,12 @@ public class Obstaculo {
 	private int y;          
 	private int ancho;    
 	private int alto;
+<<<<<<< HEAD
 	
+=======
+
+//	private double angulo;
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
 	private Image casadearriba, casadelmedio, casadeabajo, arbolgrande, arbolpequeño;
 	
 	public Obstaculo(int x, int y, String tipo) {  

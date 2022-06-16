@@ -15,7 +15,11 @@ public class Kyojin {
 	private Image ImgTitan;
 	private double angulo;
 
+<<<<<<< HEAD
 
+=======
+	// Se permite que los kyojines se superpongan
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
 	public Kyojin (double x, double y, double velocidad, double tamaño, double angulo) {
 		this.angulo=angulo;
 		this.velocidad = 0.5;

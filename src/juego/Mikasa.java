@@ -21,6 +21,7 @@ public class Mikasa {
 	private Image ImgAbajo;
 	private Image ImgArriba;
 	private Image ImgQuieta;
+<<<<<<< HEAD
 	private Rectangle rec;
 
 	public Mikasa(int x, int y, int velocidad) {
@@ -29,6 +30,20 @@ public class Mikasa {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = 0;
+=======
+	
+	private boolean modoKyojina;
+
+	// Cuando Mikasa está en modo kyojina, no hace falta mostrar nada
+	public Mikasa(double x, double y, double velocidad, double alto, double ancho,double angulo) {
+		this.x = x;
+		this.y = y;
+		this.velocidad = velocidad;
+		this.ancho = ancho;
+		this.alto = alto;
+		this.angulo = angulo;
+
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
 		this.ImgDerecha = Herramientas.cargarImagen("mikasa-camina-der-pizq.png");
 		this.ImgIzquierda = Herramientas.cargarImagen("mikasa-camina-izq-pizq.png");
 		this.ImgAbajo = Herramientas.cargarImagen("mikasa-camina-abajo-pder.png");
@@ -45,38 +60,47 @@ public class Mikasa {
 		//acá cargaría la imagen de Mikasa titan (todavía no encontré una imagen para reemplazar)
 	}
 	
+<<<<<<< HEAD
 	public Proyectil disparar () {
 		Proyectil disparo = new Proyectil(this.x, this.y, this.angulo);
+=======
+	//acá sería la colisión del suero con mikasa, pero no funcionó --> fix
+	public boolean agarroSuero(Suero suero) {
+		if (x - this.ancho >= suero.getX() - suero.getTamaño() / 2 && 
+		   x + this.ancho <= suero.getX() + suero.getTamaño() / 2 && 
+		   y - this.alto >= suero.getY() - suero.getTamaño() / 2 &&
+		   y + this.alto <= suero.getY() + suero.getTamaño() / 2) {
+			return true;}return false;
+		
+	}
+	
+	public Proyectil disparar () {
+		Proyectil disparo = new Proyectil(this.x, this.y,this.angulo);
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
 		return disparo;
 	}
 	
-	public boolean estaEnLaIzquierda(Proyectil disparo) {
-		return this.x < disparo.getX();
-	}
 	
-	public boolean estaEnLaDerecha(Proyectil disparo) {
-		return this.x > disparo.getX();
-	}
 	
-	public void caminarHaciaIzquierda(Entorno e) {
-		x -= velocidad;
-		mirarHaciaLaIzquierda(e);
-	}
-
-	public void caminarHaciaDerecha(Entorno e) {
-		x += velocidad;
-		mirarHaciaLaDerecha(e);
-	}
-
-	public void caminarHaciaArriba(Entorno e) {
-		y -= velocidad;
-		mirarHaciaArriba(e);
-	}
-
-	public void caminarHaciaAbajo(Entorno e) {
-		y += velocidad;
-		mirarHaciaAbajo(e);
-	}
+//	public void caminarHaciaIzquierda(Entorno e) {
+//		x -= velocidad;
+//		mirarHaciaLaIzquierda(e);
+//	}
+//
+//	public void caminarHaciaDerecha(Entorno e) {
+//		x += velocidad;
+//		mirarHaciaLaDerecha(e);
+//	}
+//
+//	public void caminarHaciaArriba(Entorno e) {
+//		y -= velocidad;
+//		mirarHaciaArriba(e);
+//	}
+//
+//	public void caminarHaciaAbajo(Entorno e) {
+//		y += velocidad;
+//		mirarHaciaAbajo(e);
+//	}
 
 	public boolean chocasteCon(Obstaculo o) {
 		return	x - alto  / 2 >= o.getX() - o.getAncho() / 2 && 
@@ -167,11 +191,11 @@ public class Mikasa {
 		return this.rec.height;
 	}
 
-	public double getAngulo() {
-		return this.angulo;
-	}
-	
-	public double getVelocidad() {
-		return this.velocidad;
-	}
+//	public double getAngulo() {
+//		return this.angulo;
+//	}
+//	
+//	public double getVelocidad() {
+//		return this.velocidad;
+//	}
 }
