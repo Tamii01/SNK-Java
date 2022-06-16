@@ -11,16 +11,14 @@ public class Obstaculo {
 	private int y;          
 	private int ancho;    
 	private int alto;
-
-	private double angulo;
+	
 	private Image casadearriba, casadelmedio, casadeabajo, arbolgrande, arbolpequeño;
 	
 	public Obstaculo(int x, int y, String tipo) {  
 		this.x = x;
 		this.y = y;
 		this.ancho = 250;  
-		this.alto = 250;  
-		this.angulo = 0;                                                     // ANOTACION VIEJA = ANOTACION NUEVA  
+		this.alto = 250;                                                       // ANOTACION VIEJA = ANOTACION NUEVA  
 		this.casadearriba = Herramientas.cargarImagen("casa-de-arriba.png"); // casa invertida = casa de arriba 
 		this.casadelmedio = Herramientas.cargarImagen("casa-del-medio.png"); // casa = casa del  medio
 		this.casadeabajo = Herramientas.cargarImagen("casa-de-abajo.png");   // nueva casa agregada
@@ -28,44 +26,24 @@ public class Obstaculo {
 		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
 	}
 	
-	
-//	public void dibujar(Entorno e, String tipo) {
-//		if (tipo.equals("casaDeArriba")) {
-//			e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
-//		}
-//		if (tipo.equals("casaDelMedio")) {
-//			e.dibujarImagen(casadelmedio, x, y, angulo, 0.38);
-//		}
-//		if (tipo.equals("casaDeAbajo")) {
-//			e.dibujarImagen(casadeabajo, x, y, angulo, 0.45);
-//		}
-//		if (tipo.equals("arbolPequeño")) {
-//			e.dibujarImagen(arbolpequeño, x, y, angulo, 1.5); 
-//		}
-//		if (tipo.equals("arbolGrande")) {
-//			e.dibujarImagen(arbolgrande, x, y, angulo, 1.5);
-//		}
-//	}
-
-	
 	public void casaDeArriba(Entorno e) {
-		e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
+		e.dibujarImagen(casadearriba, x, y, 0, 0.38);
 	}
 	
 	public void casaDelMedio(Entorno e) {
-		e.dibujarImagen(casadelmedio, x, y, angulo, 0.38);
+		e.dibujarImagen(casadelmedio, x, y, 0, 0.38);
 	}
 	
 	public void casaDeAbajo(Entorno e) {
-		e.dibujarImagen(casadeabajo, x, y, angulo, 0.45); // posición en X, posición en Y, ángulo, tamaño   
+		e.dibujarImagen(casadeabajo, x, y, 0, 0.45); // posición en X, posición en Y, ángulo, tamaño   
 	}
 	
 	public void arbolPequeño(Entorno e) {
-		e.dibujarImagen(arbolpequeño, x, y, angulo, 1.5); 
+		e.dibujarImagen(arbolpequeño, x, y, 0, 1.5); 
 	}
 	
 	public void arbolGrande(Entorno e) {
-		e.dibujarImagen(arbolgrande, x, y, angulo, 1.5);
+		e.dibujarImagen(arbolgrande, x, y, 0, 1.5);
 	}
 	
 	public double getX() {

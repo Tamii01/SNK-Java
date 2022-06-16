@@ -7,55 +7,27 @@ import entorno.Herramientas;
 
 public class Proyectil {
 
-	private double x;
-	private double y;
-
-	private double angulo;
-	private double tamaño;
-	private Image ImgProyectilIzquierda, ImgProyectilDerecha;
+	private double x, y, ancho, alto, angulo;
+	private Image  ImgProyectil;
 	
-	public Proyectil(double x, double y) {
+	public Proyectil(double x, double y, double angulo) {
 		this.x = x;
 		this.y = y;
-		this.angulo = 0;
-		this.tamaño = 0.05;
-		this.ImgProyectilIzquierda = Herramientas.cargarImagen("disparo-derecha.png");
-		this.ImgProyectilDerecha = Herramientas.cargarImagen("disparo-derecha.png");
+		this.angulo = angulo;
+		this.alto = 70;
+		this.ancho = 70;
+		this.ImgProyectil = Herramientas.cargarImagen("disparo-derecha.png");
 	}
 	
-	public void dibujarIzquierda(Entorno e) {
-		e.dibujarImagen(ImgProyectilIzquierda, x, y, angulo, tamaño);
+	public void dibujar(Entorno e) {
+		e.dibujarImagen(this.ImgProyectil, this.getX(), this.getY(), angulo, 0.05);
 	}
-	
-	public void dibujarDerecha(Entorno e) {
-		e.dibujarImagen(ImgProyectilDerecha, x, y, angulo, tamaño);
-	}
-	
-//	sacado del movimiento de la navecita
-	public void girar (double modificador) {
-		
-		this.angulo = this.angulo + modificador;
-		if(this.angulo < 0) {
-			this.angulo +=2*Math.PI;
-		}
-		if(this.angulo > 2*Math.PI) {
-			this.angulo -=2*Math.PI;
-		}
-	}
-	
 	//multiplicado *7 para que su velocidad aumente
-	public void moverDerecha(Entorno e) {
+	public void mover(Entorno e) {
 		this.x += Math.cos(angulo)*7;
 		this.y += Math.sin(angulo)*7;
-		dibujarDerecha(e);
 	}
-	
-	public void moverIzquierda(Entorno e) {
-		this.x -= Math.cos(angulo)*7;
-		this.y -= Math.sin(angulo)*7;
-		dibujarIzquierda(e);
-	}
-	
+
 	public double getX() {
 		return this.x;
 	}
@@ -63,10 +35,17 @@ public class Proyectil {
 	public double getY() {
 		return this.y;
 	}
-	
-	public double getTamaño() {
-		return this.tamaño;
-	}
+    
+    public double getAncho() {
+    	return this.ancho;
+    }
+    
+    public double getAlto() {
+        return this.alto;
+    }
 
-	
- }
+    public double getAngulo() {
+        return this.angulo;
+    }
+
+}
