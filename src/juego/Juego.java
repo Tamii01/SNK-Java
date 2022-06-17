@@ -12,11 +12,9 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin kyojin;
 	private Obstaculo casaDeArriba, casaDelMedio, casaDeAbajo, arbolPequeño, arbolGrande;
 	private Kyojin[] kyojines;
 	private Proyectil disparo;
-//	private Obstaculo[] obstaculos = new Obstaculo[5];
 	private Suero suero;
 	private Image fondo, gameOver;
 	private boolean juegoTerminado;
@@ -28,8 +26,7 @@ public class Juego extends InterfaceJuego {
 
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 17", 800, 600); 
 
-		mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 5, 60, 20); //x(400), y(300), velocidad, alto, ancho
-		kyojin = new Kyojin(100, 240, 0.5, 0.15, 0);  //x, y, velocidad, tamaño, angulo
+		mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 5, 60, 20, 0); //x(400), y(300), velocidad, alto, ancho, angulo
 		casaDeArriba = new Obstaculo(155,95, "casaDeArriba");
 		casaDelMedio = new Obstaculo(643,150, "casaDelMedio");
 		casaDeAbajo = new Obstaculo(61,410, "casaDeAbajo");
@@ -40,23 +37,13 @@ public class Juego extends InterfaceJuego {
 		disparo = null;	
 		juegoTerminado = false;
 		kyojines = new Kyojin[4];	
-		suero = new Suero(500,550);
+		suero = new Suero(400, 300, 60, 20);
 		
 		kyojines[0]= new Kyojin (432, 526, 0.5, 0.15, 0);
 		kyojines[1]= new Kyojin (200, 416, 0.5, 0.15, 0);
 		kyojines[2]= new Kyojin (340, 316, 0.5, 0.15, 0);
 		kyojines[3]= new Kyojin (150, 226, 0.5, 0.15, 0);
-		
-//		obstaculos[0] = casaDeArriba;
-//		obstaculos[1] = casaDelMedio;
-//		obstaculos[2] = casaDeAbajo;
-//		obstaculos[3] = arbolPequeño;
-//		obstaculos[4] = arbolGrande;
-//		
-//		for (Obstaculo o : obstaculos) {
-//			o.dibujar(entorno);
-//		} 
-		
+
 		puntaje = 0;
 		vidas = 5;
 		
@@ -71,20 +58,17 @@ public class Juego extends InterfaceJuego {
 
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0, 2.5);
 		mikasa.dibujar(entorno);
-		kyojin.dibujar(entorno);
-		kyojin.mover();
-		kyojin.perseguirAMikasa(mikasa);
 		casaDeArriba.casaDeArriba(entorno);
 		casaDelMedio.casaDelMedio(entorno);
 		casaDeAbajo.casaDeAbajo(entorno);
 		arbolPequeño.arbolPequeño(entorno);
 		arbolGrande.arbolGrande(entorno);
-		suero.dibujar(entorno);
 		mikasa.dibujar(entorno);
 		
 		entorno.cambiarFont("sans", 24, Color.WHITE);
+		entorno.escribirTexto("colision " + mikasa.agarroSuero(suero), 500, 300);
 		entorno.escribirTexto("puntaje: " + puntaje, entorno.ancho() / 2 - 350, entorno.alto() - 35);
-		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
+//		entorno.escribirTexto("Vidas: " + vidas, 320, 30);
 
 		if (entorno.estaPresionada('a') && (mikasa.chocasteConEntornoIzquierdo())) {
 			mikasa.rotarHaciaIzquierda(entorno);
@@ -141,25 +125,8 @@ public class Juego extends InterfaceJuego {
 		
 		//mientras el disparo sea distinto de null, sigue con las demás instrucciones
 		if (this.disparo !=null) {
-			
-			//si mikasa va hacia la izquierda
-			//el disparo se dibuja y se empieza
-			//a mover. --> fix
-			if (mikasa.getX() <= 400) {
-				this.disparo.dibujarIzquierda(entorno);
-				this.disparo.moverIzquierda(entorno);
-				this.disparo.girar(mikasa.getAngulo());		//fix
-			}
-			
-			//si mikasa va hacia la derecha
-			//el disparo se dibuja y se empieza
-			//a mover. --> fix
-			if (mikasa.getX() >= 400) {
-				this.disparo.dibujarDerecha(entorno);
-				this.disparo.moverDerecha(entorno);
-				disparo.girar(mikasa.getAngulo()); 			//fix
-			}
-			
+				this.disparo.dibujar(entorno);
+				this.disparo.mover(entorno);
 			//si el disparo pasa los limites del 
 			//entorno, entonces se vuelve null
 			if(disparo.getX() > 800 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 10 ) {
@@ -167,11 +134,16 @@ public class Juego extends InterfaceJuego {
 			}
 			
 			//la idea es que si es true cuando mikasa agarra el suero, este se elimine
+			
+		if (this.suero != null) {
+			suero.dibujar(entorno);
+			
+			
 			if (mikasa.agarroSuero(suero)) {
 				this.suero = null;
-			}
-	
 		}
+	}
+
 
 //--------------------------CONDICIONES KYOJIN---------------------------------------
 		
@@ -182,10 +154,10 @@ public class Juego extends InterfaceJuego {
 			//poder usar el array de objetos en vez de poner cada cosa por separado, pero lo del array de objetos, el que 
 			//intenté hacer, me tiraba error. Está comentado lo que intenté hacer, arriba de todo.
 			for (int i = 0; i < kyojines.length; i++) {
-				kyojines[i].dibujar(entorno);
+//				kyojines[i].dibujar(entorno);
 				kyojines[i].mover();
 				kyojines[i].perseguirAMikasa(mikasa);
-				
+
 				if (kyojines[i].estasDentroDelLimiteDerecho())
 					kyojines[i].cambiarDeDireccion();					
 	
@@ -224,41 +196,11 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 	}
+}
+
 		
 //------------------------------------TERMINA TICK------------------------------------------------	
 
-	//hay que arreglar la colision, pero la idea es recorrer el array de kyojines, si la X e Y de cada kyojin colisiona
-	//con el disparo, este mismo se elimina y se le suman 10 puntos
-	public void disparoMataKyojin() {
-		for (int i = 0; i<kyojines.length; i++) {
-			if(disparo !=null && 
-			   disparo.getX() + disparo.getTamaño() <= kyojines[i].getX() - kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getX() - disparo.getTamaño() >= kyojines[i].getX() + kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getY() - disparo.getTamaño() <= kyojines[i].getY() - kyojines[i].getTamaño() / 2 + 20 &&
-			   disparo.getY() + disparo.getTamaño() >= kyojines[i].getY() + kyojines[i].getTamaño() / 2 + 20) {
-			   this.kyojines[i] = null;
-			   this.disparo = null;
-			   puntaje +=10;
-			}
-		}
-	}
-	
-	//metodo que contiene un contador para simular que este es el tiempo
-	//en donde cuando se llega a 200, se genera un nuevo suero en un lugar random entre
-	//100 y 500 --> fix
-	public void generarSuero() {
-		Random r = new Random();
-		int n1 = r.nextInt(100);
-		int n2 = r.nextInt(500);
-		int cont = 200;
-		if (suero == null) {
-			for (int i=0; i<=cont;i++) {
-				if (i==cont) {
-					suero = new Suero(n1,n2);
-				}
-			}
-		}
-	}
 	
 	//en caso de que se maten kyojines, este metodo regenera nuevos kyojines --> fix
 	public void regenerarKyojines() {

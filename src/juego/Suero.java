@@ -9,7 +9,7 @@ public class Suero {
 
 	private double x;
 	private double y;
-	private double tamaño;
+	private double ancho, alto;
 	private Image ImgPotion;
 	
 	// IDEA:
@@ -18,15 +18,16 @@ public class Suero {
 	//para simular el tiempo en que el suero queda en ese lugar antes de eliminarse y generarse en otra posicion.
 	//si el contador llega a 0, se genera un nuevo suero en un lugar random. 
 	//Cuando Mikasa pasa sobre el suero (cuando las pos. de cada uno son iguales) el suero se elimina (== null) y se genera uno nuevo en otro lado.
-	public Suero(double x, double y) {
-		this.tamaño = 0.5;
+	public Suero(double x, double y, double alto, double ancho) {
+		this.alto = alto;
+		this.ancho = ancho;
 		this.x = x;
 		this.y = y;
 		this.ImgPotion = Herramientas.cargarImagen("potion.png");
 	}
 	
 	public void dibujar(Entorno e){
-		e.dibujarImagen(ImgPotion, x, y, 0, tamaño);
+		e.dibujarImagen(ImgPotion, x, y, 0, 2);
 	}
 
 	public double getX() {
@@ -37,8 +38,11 @@ public class Suero {
 		return this.y;
 	}
 	
-	public double getTamaño() {
-		return this.tamaño;
+	public double getAncho() {
+		return this.ancho;
 	}
 
+	public double getAlto() {
+		return this.alto;
+	}
 }

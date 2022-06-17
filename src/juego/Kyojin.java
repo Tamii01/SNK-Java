@@ -10,6 +10,8 @@ public class Kyojin {
 	private double x,y;
 	private double velocidad;	
 	private double tamaño;
+	private double ancho;
+	private double alto;
 	private Image ImgTitan;
 
 	private double angulo;
@@ -18,8 +20,10 @@ public class Kyojin {
 		this.angulo=angulo;
 		this.x = x;
 		this.y = y;
-		this.velocidad = velocidad;
+		this.velocidad = 0.5;
 		this.tamaño = 0.15;
+		this.ancho = 2;
+		this.alto = 2;
 		this.ImgTitan = Herramientas.cargarImagen("titan-bestia.png");
 	}
 
@@ -37,19 +41,23 @@ public class Kyojin {
 	}
 
 	public boolean chocasteCon(Obstaculo o) {
-		return	x - tamaño / 2 >= o.getX() - o.getAncho() / 2 && 
-				x + tamaño / 2 <= o.getX() + o.getAncho() / 2 && 
-				y - tamaño / 2 >= o.getY() - o.getAlto() / 2 &&
-				y + tamaño / 2 <= o.getY() + o.getAlto() / 2;
+		return	x - ancho / 2 >= o.getX() - o.getAncho() / 2 && 
+				x + ancho / 2 <= o.getX() + o.getAncho() / 2 && 
+				y - alto / 2 >= o.getY() - o.getAlto()  / 2 &&
+				y + alto / 2 <= o.getY() + o.getAlto()  / 2;
 	}
 
 	public boolean dañasteAMikasa(Mikasa mikasa) {
-		return	x - tamaño >= mikasa.getX() - mikasa.getAncho() / 2 && 
-				x + tamaño <= mikasa.getX() + mikasa.getAncho() / 2 && 
-				y - tamaño >= mikasa.getY() - mikasa.getAlto() / 2 &&
-				y + tamaño <= mikasa.getY() + mikasa.getAlto() / 2;	
+		return	x - ancho >= mikasa.getX() - mikasa.getAncho() / 2 && 
+				x + ancho <= mikasa.getX() + mikasa.getAncho() / 2 && 
+				y - alto >= mikasa.getY() - mikasa.getAlto()  / 2 &&
+				y + alto <= mikasa.getY() + mikasa.getAlto()  / 2;	
 	}
 
+//	public boolean teDañaron(Proyectil disparo) {
+//		return false;
+//	}
+//	
 	public void perseguirAMikasa(Mikasa mikasa) {
 		if (this.x > mikasa.getX() && this.y > mikasa.getY()) {
 			x+=velocidad;
@@ -72,7 +80,7 @@ public class Kyojin {
 		}
 	}
 
-	// estásDentroDelLímiteDerecho()
+//	 estásDentroDelLímiteDerecho()
 	public boolean estasDentroDelLimiteIzquierdo() {
 		return this.x > 20;							// compara la posicion de mikasa con el limite del entorno izquierdo
 	}
@@ -93,10 +101,6 @@ public class Kyojin {
 		angulo -= Math.PI/2;
 	}
 
-	public void acelerar() {
-		velocidad += 0.05;
-	}
-
 	public double getX() {
 		return this.x;
 	}
@@ -108,8 +112,10 @@ public class Kyojin {
 	public double getAngulo() {
 		return this.angulo;
 	}
-	
-	public double getTamaño() {
-		return this.tamaño;
+
+	public boolean teDañaron(Proyectil disparo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
+	
 }
