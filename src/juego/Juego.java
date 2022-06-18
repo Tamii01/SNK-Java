@@ -35,7 +35,7 @@ public class Juego extends InterfaceJuego {
 		fondo = Herramientas.cargarImagen("fondo-del-juego.png");
 		gameOver = Herramientas.cargarImagen("game-over.png");
 		juegoTerminado = false;
-		disparo = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo());
+		disparo = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo()); // esto no va acá, el disparo originamente tiene que ser null
 		puntaje = 0;	
 		generarKyojines();
 		this.entorno.iniciar();
@@ -131,7 +131,7 @@ public class Juego extends InterfaceJuego {
 
 			//Si el disparo se sale de los limites del entorno, se elimina
 			if(disparo.getX() > 800 || disparo.getX() < 20 || disparo.getY() > 580 || disparo.getY() < 10) {
-				this.disparo = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo());
+				this.disparo = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo()); // esto no va, el disparo debería ser null acá
 			}	
 		}
 		//mientras el suero exista
