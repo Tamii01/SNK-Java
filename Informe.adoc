@@ -1,20 +1,69 @@
 = Programación I - Trabajo Práctico: Attack on Titan, Final Season 
 
-
 == Introducción
 
-// === Subsección
-
-// *Negrita*
-// `mono`
-// _italic_
+En la Isla Paradis nuestra militar, Mikasa Ackerman, se prepara para combatir contra los Kyojines, unas criaturas humanoides gigantes que destruyen casas, deboran humanos e invaden ciudades. Mikasa tiene la tarea de acabar con cada uno de estos Kyojines para así salvar a todos los humanos que habitan en esta Isla. Nuestro trabajo ha sido desarrollar un simulador que le permite a Mikasa poder defenderse y eliminar la mayor cantidad de kyojines posibles. 
 
 == Descripción
-Como una de los primeros "problemas" podemos enumerar, a la hora de modificar tanto el movimiento como el choque con el entorno, la dificultad de Mikasa atravesando el mismo. Como solución, logramos comparar la posición del personaje con x e y ya determinadas “cercanas” a los bordes del entorno, si estas eran las mismas, Mikasa no iba a poder avanzar, limitando el recorrido y haciendo que “rebote” del entorno usando el metodo de avanzar a la inversa(en vez de sumar en x e y, ir restando).
+
+A continuación, enumeraremos los problemas por los cuales nuestro grupo ha pasado durante el desarrollo de este juego.
+
+- Movimiento del Kyojin:
+Como uno de los primeros problemas que podemos enumerar, uno de ellos ha sido el del movimiento del kyojin, ya que cada vez que este chocaba contra el entorno, su imagen giraba por completo por mucho tiempo y no avanzaba bien. Lamentablemente, este es uno de los problemas que sigue estando dentro del juego y faltó arreglar.
+
+- Colision:
+Al usar rectangulos para crear las colisiones, no hubo problema en usar las formulas que nos han dado, pero el luego de implementar estas mismas en el código, encontramos el problema al momento de que Mikasa se acercaba a un obstaculo. Cada vez que Mikasa avanzaba y chocaba contra un obstaculo, ella podía pasar por debajo de ellos, la colisión funcionaba, pero solo una parte. En la X+ e Y- del obstaculo, se generaba una colision, pero en el otro caso, en la X- e Y+, Mikasa podía pasar igual.
+
+- Disparo:
+Uno de los problemas más grandes que tuvimos, al momento de implementar el código se nos dificultaba mucho, al principio pudimos conseguir que el proyectil se dibuje cerca de Mikasa, pero a pesar de haberlo conseguido, este mismo no tenía movimiento propio cada vez que se apretaba la tecla espacio. Tampoco sabíamos muy bien dónde ubicar el disparo dentro del código, ya que pensabamos meterlo dentro de la clase de Mikasa para que este mismo se dibuje y avance, pero eso claramente estaba mal al incio. Una solución que obtuvimos fue colocarlo en la clase Juego (como corresponde) y lograr que tenga movimiento propio. Otro problema fue el de que se dibuje en la misma dirección a la que iba Mikasa cada vez que ella giraba, el código que teníamos funcionaba, pero cuando Mikasa giraba, este también lo hacía y quedaba girando en circulos.
 
 == Implementación
 
+En esta sección pasaremos a explicar cada clase y que métodos hay dentro de ellas. 
+
+=== *Mikasa*
+
+- *dibujar*
+* En este método Mikasa se podrá dibujar en el entorno, recibe una imagen, una X, una Y y un angulo.
+
+- *agarroSuero*
+
+* Método boolean que devuelve true si hubo una colision entre el suero y Mikasa, false si mikasa no está en el mismo lugar que el suero.
+
+- *disparar*
+
+* Método Proyectil, este mismo genera un nuevo proyectil con la X e Y de Mikasa para que ella dispare.
+
+- *caminarHaciaIzquierda, caminarHaciaDerecha, caminarHaciaArriba, caminarHaciaAbajo*
+
+ * Estos métodos le permiten a mikasa caminar hacia donde ella quiera aumentando o disminuyendo su X e Y dependiendo de donde ella vaya, también recibe una imagen que corresponde a dónde debería mirar ella si va hacia la izquierda, derecha, arriba o abajo.
+
+- *chocasteCon*
+* Este método le permite a Mikasa poder detectar cuándo hay un obstáculo.
+
+- *chocasteConObstaculo* 
+* Método que le informa a Mikasa que no avance al chocar con un obstáculo.
+
+- * *
+
+=== *Kyojin*
+- *dibujar* 
+* Este metodo nos permite dibujar al Kyojin dentro del entorno.
+
+- *mover*
+* Le permite moverse al Kyojin dentro del entorno, aumentando y disminuyendo su X e Y 
+
+- *acelerar*
+
+=== *Obstaculo*
+
+=== *Proyectil*
+
+=== *Suero*
+
+=== *Juego*
+
 == Conclusiones
 
-
+Nuestra conclision final es que aunque hemos tenido muchas dificultades, hemos aprendido que con este tipo de juegos que quizás sean simples, llevan demasiado tiempo en desarrollarse. Gracias a este trabajo pudimos entender un mucho mejor objetos, hemos podido implementar gran parte del conocimiento que hemos obtenido durante la cursada y hemos aprendido a usar git. Aunque el trabajo no se haya terminado, lo hemos disfrutado, así como también nos hemos frustrado mucho al ver cómo no nos salian varias cosas, pero hemos obtenido conocimientos nuevos como el de cómo detectar colisiones, hacer que se mueva un personaje, etc. 
 

@@ -11,7 +11,20 @@ public class Obstaculo {
 	private int y;          
 	private int ancho;    
 	private int alto;
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+<<<<<<< HEAD
+	
+=======
+
+//	private double angulo;
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 	private Image casadearriba, casadelmedio, casadeabajo, arbolgrande, arbolpequeño;
 	
 	public Obstaculo(int x, int y, String tipo) {  
@@ -25,26 +38,6 @@ public class Obstaculo {
 		this.arbolpequeño = Herramientas.cargarImagen("arbol-pequeño.png");  // arbol = arbol pequeño
 		this.arbolgrande = Herramientas.cargarImagen("arbol-grande.png");    // nuevo arbol agregado
 	}
-	
-	
-//	public void dibujar(Entorno e, String tipo) {
-//		if (tipo.equals("casaDeArriba")) {
-//			e.dibujarImagen(casadearriba, x, y, angulo, 0.38);
-//		}
-//		if (tipo.equals("casaDelMedio")) {
-//			e.dibujarImagen(casadelmedio, x, y, angulo, 0.38);
-//		}
-//		if (tipo.equals("casaDeAbajo")) {
-//			e.dibujarImagen(casadeabajo, x, y, angulo, 0.45);
-//		}
-//		if (tipo.equals("arbolPequeño")) {
-//			e.dibujarImagen(arbolpequeño, x, y, angulo, 1.5); 
-//		}
-//		if (tipo.equals("arbolGrande")) {
-//			e.dibujarImagen(arbolgrande, x, y, angulo, 1.5);
-//		}
-//	}
-
 	
 	public void casaDeArriba(Entorno e) {
 		e.dibujarImagen(casadearriba, x, y, 0, 0.38);

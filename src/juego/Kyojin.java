@@ -13,17 +13,31 @@ public class Kyojin {
 	private double ancho;
 	private double alto;
 	private Image ImgTitan;
-
 	private double angulo;
 
+<<<<<<< HEAD
+
+=======
+	// Se permite que los kyojines se superpongan
+>>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
 	public Kyojin (double x, double y, double velocidad, double tamaño, double angulo) {
 		this.angulo=angulo;
+<<<<<<< HEAD
 		this.x = x;
 		this.y = y;
 		this.velocidad = 0.5;
 		this.tamaño = 0.15;
 		this.ancho = 2;
 		this.alto = 2;
+<<<<<<< HEAD
+=======
+=======
+		this.velocidad = 0.5;
+		this.tamaño = 0.15;
+		this.ancho = 70;
+		this.alto = 70;
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 		this.ImgTitan = Herramientas.cargarImagen("titan-bestia.png");
 	}
 
@@ -43,13 +57,27 @@ public class Kyojin {
 	public boolean chocasteCon(Obstaculo o) {
 		return	x - ancho / 2 >= o.getX() - o.getAncho() / 2 && 
 				x + ancho / 2 <= o.getX() + o.getAncho() / 2 && 
+<<<<<<< HEAD
 				y - alto / 2 >= o.getY() - o.getAlto()  / 2 &&
 				y + alto / 2 <= o.getY() + o.getAlto()  / 2;
+=======
+<<<<<<< HEAD
+				y - alto / 2 >= o.getY() - o.getAlto()  / 2 &&
+				y + alto / 2 <= o.getY() + o.getAlto()  / 2;
+=======
+				y - alto  / 2 >= o.getY() - o.getAlto()  / 2 &&
+				y + alto  / 2 <= o.getY() + o.getAlto()  / 2;
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 	}
 
 	public boolean dañasteAMikasa(Mikasa mikasa) {
 		return	x - ancho >= mikasa.getX() - mikasa.getAncho() / 2 && 
 				x + ancho <= mikasa.getX() + mikasa.getAncho() / 2 && 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 				y - alto >= mikasa.getY() - mikasa.getAlto()  / 2 &&
 				y + alto <= mikasa.getY() + mikasa.getAlto()  / 2;	
 	}
@@ -58,6 +86,22 @@ public class Kyojin {
 //		return false;
 //	}
 //	
+<<<<<<< HEAD
+=======
+=======
+				y - alto  >= mikasa.getY() - mikasa.getAlto()  / 2 &&
+				y + alto  <= mikasa.getY() + mikasa.getAlto()  / 2;	
+	}
+	
+	public boolean teDañaron(Proyectil disparo) {
+		return	x - ancho >= disparo.getX() - disparo.getAncho() / 2 && 
+				x + ancho <= disparo.getX() + disparo.getAncho() / 2 && 
+				y - alto  >= disparo.getY() - disparo.getAlto()  / 2 &&
+				y + alto  <= disparo.getY() + disparo.getAlto()  / 2;
+	}
+	
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 	public void perseguirAMikasa(Mikasa mikasa) {
 		if (this.x > mikasa.getX() && this.y > mikasa.getY()) {
 			x+=velocidad;
@@ -79,8 +123,15 @@ public class Kyojin {
 			y+=velocidad;
 		}
 	}
+<<<<<<< HEAD
 
 //	 estásDentroDelLímiteDerecho()
+<<<<<<< HEAD
+=======
+=======
+	//	 estásDentroDelLímiteDerecho()
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 	public boolean estasDentroDelLimiteIzquierdo() {
 		return this.x > 20;							// compara la posicion de mikasa con el limite del entorno izquierdo
 	}
@@ -108,14 +159,31 @@ public class Kyojin {
 	public double getY() {
 		return this.y;
 	}
+	
+	public double getAncho() {
+		return this.ancho;
+	}
 
+	public double getAlto() {
+		return this.alto;
+	}
+	
 	public double getAngulo() {
 		return this.angulo;
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 
 	public boolean teDañaron(Proyectil disparo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+>>>>>>> 84d747720ecdabdcafe4cee1f78b4633e5dd8d2a
 }
