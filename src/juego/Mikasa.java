@@ -15,135 +15,70 @@ public class Mikasa {
 	private double alto;
 	private double ancho;
 	private double angulo;
-<<<<<<< HEAD
-	private boolean modoKyojina;
-=======
-//	private boolean modoKyojina;
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
 	private Image ImgDerecha;
 	private Image ImgIzquierda;
 	private Image ImgAbajo;
 	private Image ImgArriba;
 	private Image ImgQuieta;
-<<<<<<< HEAD
-	private Rectangle rec;
-
-<<<<<<< HEAD
-	public Mikasa(double x, double y, double velocidad, double alto, double ancho, double angulo) {
-=======
-	public Mikasa(int x, int y, int velocidad) {
-		this.rec = new Rectangle (x, y, 70, 70);
-		this.x = x;
-		this.y = y;
-		this.velocidad = velocidad;
-		this.angulo = 0;
-=======
 	
-	private boolean modoKyojina;
-
 	// Cuando Mikasa está en modo kyojina, no hace falta mostrar nada
-	public Mikasa(double x, double y, double velocidad, double alto, double ancho,double angulo) {
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+	public Mikasa(double x, double y, double velocidad, double alto, double ancho) {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
 		this.ancho = ancho;
 		this.alto = alto;
-		this.angulo = angulo;
-<<<<<<< HEAD
-=======
-
->>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+		this.angulo = 0;
+		
 		this.ImgDerecha = Herramientas.cargarImagen("mikasa-camina-der-pizq.png");
 		this.ImgIzquierda = Herramientas.cargarImagen("mikasa-camina-izq-pizq.png");
 		this.ImgAbajo = Herramientas.cargarImagen("mikasa-camina-abajo-pder.png");
 		this.ImgArriba = Herramientas.cargarImagen("mikasa-camina-arriba-pder.png");
 		this.ImgQuieta = Herramientas.cargarImagen("mikasa-quieta.png"); 
-<<<<<<< HEAD
-		this.modoKyojina = false;
-=======
-//		this.modoKyojina = false;
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
 	}
 	
 	public void dibujar(Entorno e) {
 		e.dibujarImagen(ImgQuieta, x, y, angulo);
 	}
 	
-	public void transformacionATitan() {
-		//acá cargaría la imagen de Mikasa titan (todavía no encontré una imagen para reemplazar)
+	public boolean agarroSuero(Suero s) {
+		return	x - alto  / 2 >= s.getX() - s.getAncho() / 2 && 
+				x + alto  / 2 <= s.getX() + s.getAncho() / 2 &&
+				y - ancho / 2 >= s.getY() - s.getAlto()  / 2 &&
+				y + ancho / 2 <= s.getY() + s.getAlto()  / 2;
 	}
-	
-<<<<<<< HEAD
-	public Proyectil disparar () {
-		Proyectil disparo = new Proyectil(this.x, this.y, this.angulo);
-=======
-<<<<<<< HEAD
-	public Proyectil disparar () {
-		Proyectil disparo = new Proyectil(this.x, this.y, this.angulo);
-=======
-	//acá sería la colisión del suero con mikasa, pero no funcionó --> fix
-	public boolean agarroSuero(Suero suero) {
-		if (x - this.ancho >= suero.getX() - suero.getTamaño() / 2 && 
-		   x + this.ancho <= suero.getX() + suero.getTamaño() / 2 && 
-		   y - this.alto >= suero.getY() - suero.getTamaño() / 2 &&
-		   y + this.alto <= suero.getY() + suero.getTamaño() / 2) {
-			return true;}return false;
-		
-	}
-	
-	public Proyectil disparar () {
-		Proyectil disparo = new Proyectil(this.x, this.y,this.angulo);
->>>>>>> 997b262d672148193c709a5c8e56f88e02429a35
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
-		return disparo;
-	}
-	
-	
-	
-//	public void caminarHaciaIzquierda(Entorno e) {
-//		x -= velocidad;
-//		mirarHaciaLaIzquierda(e);
-//	}
-//
-//	public void caminarHaciaDerecha(Entorno e) {
-//		x += velocidad;
-//		mirarHaciaLaDerecha(e);
-//	}
-//
-//	public void caminarHaciaArriba(Entorno e) {
-//		y -= velocidad;
-//		mirarHaciaArriba(e);
-//	}
-//
-//	public void caminarHaciaAbajo(Entorno e) {
-//		y += velocidad;
-//		mirarHaciaAbajo(e);
-//	}
 
 	public boolean chocasteCon(Obstaculo o) {
 		return	x - alto  / 2 >= o.getX() - o.getAncho() / 2 && 
 				x + alto  / 2 <= o.getX() + o.getAncho() / 2 &&
-				y - ancho / 2 >= o.getY() - o.getAlto() / 2 &&
-				y + ancho / 2 <= o.getY() + o.getAlto() / 2;
-	}
-	
-	public boolean agarroSuero(Suero s) {
-		return	x - ancho / 2 >= s.getX() - s.getAncho() / 2 && 
-				x + ancho / 2 <= s.getX() + s.getAncho() / 2 && 
-<<<<<<< HEAD
-				y - alto / 2 >= s.getY() - s.getAlto()  / 2 &&
-				y + alto / 2 <= s.getY() + s.getAlto()  / 2;	
-=======
-				y - alto  / 2 >= s.getY() - s.getAlto()  / 2 &&
-				y + alto  / 2 <= s.getY() + s.getAlto()  / 2;	
->>>>>>> 794f52c52a4d35c6bdda46b44718d896a8e510b5
+				y - ancho / 2 >= o.getY() - o.getAlto()  / 2 &&
+				y + ancho / 2 <= o.getY() + o.getAlto()  / 2;
 	}
 
 	public void chocasteConObstaculo() {
 		y-=velocidad;
 		x+=velocidad;
+	}
+
+	public Proyectil disparar () {
+		Proyectil disparo = new Proyectil(getX(), getY(), getAngulo());
+		return disparo;
+	}
+
+	private void mirarHaciaLaIzquierda(Entorno e) {
+		e.dibujarImagen(ImgIzquierda, x, y, angulo);
+	}
+
+	public void mirarHaciaLaDerecha(Entorno e) {
+		e.dibujarImagen(ImgDerecha, x, y, angulo);
+	}
+
+	public void mirarHaciaArriba(Entorno e) {
+		e.dibujarImagen(ImgArriba, x, y, angulo);
+	}
+
+	public void mirarHaciaAbajo(Entorno e) {
+		e.dibujarImagen(ImgAbajo, x, y, angulo);
 	}
 
 	public void rotarHaciaIzquierda(Entorno e) {
@@ -167,22 +102,6 @@ public class Mikasa {
 		y -= velocidad * Math.sin(angulo);
 		mirarHaciaAbajo(e);
 	}
-	
-	private void mirarHaciaLaIzquierda(Entorno e) {
-		e.dibujarImagen(ImgIzquierda, x, y, angulo);
-	}
-
-	public void mirarHaciaLaDerecha(Entorno e) {
-		e.dibujarImagen(ImgDerecha, x, y, angulo);
-	}
-
-	public void mirarHaciaArriba(Entorno e) {
-		e.dibujarImagen(ImgArriba, x, y, angulo);
-	}
-
-	public void mirarHaciaAbajo(Entorno e) {
-		e.dibujarImagen(ImgAbajo, x, y, angulo);
-	}
 
 	public boolean chocasteConEntornoIzquierdo() {
 		return this.x > 20;							// compara la posicion de mikasa con el limite del entorno izquierdo
@@ -201,26 +120,22 @@ public class Mikasa {
 	}	
 
 	public double getX() {
-		return this.rec.x;
+		return this.x;
 	}
 
 	public double getY() {
-		return this.rec.y;
-	}
-
-	public double getAncho() {
-		return this.rec.width;
+		return this.y;
 	}
 
 	public double getAlto() {
-		return this.rec.height;
+		return this.alto;
 	}
 
-//	public double getAngulo() {
-//		return this.angulo;
-//	}
-//	
-//	public double getVelocidad() {
-//		return this.velocidad;
-//	}
+	public double getAncho() {
+		return this.ancho;
+	}
+	
+	public double getAngulo() {
+		return this.angulo;
+	}
 }
